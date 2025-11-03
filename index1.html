@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizki Florist - Portofolio Papan Bunga</title>
+    <meta name="description" content="Portofolio Rizki Florist, menyediakan papan bunga ucapan untuk berbagai acara.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Simple transition for modal */
+        .modal-enter {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+        .modal-enter-active {
+            opacity: 1;
+            transform: scale(1);
+            transition: all 300ms ease-out;
+        }
+        .modal-leave-active {
+            opacity: 0;
+            transform: scale(0.95);
+            transition: all 300ms ease-in;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800">
+
+    <!-- Header -->
+    <header class="bg-sky-600 text-white shadow-lg sticky top-0 z-50">
+        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold">Rizki Florist</a>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="hover:text-sky-200 transition">Beranda</a>
+                <a href="#gallery" class="hover:text-sky-200 transition">Galeri</a>
+                <a href="#contact" class="hover:text-sky-200 transition">Kontak</a>
+            </div>
+            <div class="md:hidden">
+                <!-- Mobile menu button can be added here if needed -->
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="bg-sky-100 min-h-[60vh] flex items-center">
+            <div class="container mx-auto px-6 text-center">
+                <h1 class="text-4xl md:text-6xl font-extrabold text-sky-800 mb-4">Abadikan Momen Spesial Anda</h1>
+                <p class="text-lg md:text-xl text-sky-700 max-w-3xl mx-auto">
+                    Rizki Florist menyediakan papan bunga ucapan selamat, duka cita, dan peresmian dengan desain yang elegan dan modern.
+                </p>
+                <a href="#contact" class="mt-8 inline-block bg-sky-600 text-white px-8 py-3 rounded-full font-bold text-lg hover:bg-sky-700 transition shadow-lg">
+                    Pesan Sekarang
+                </a>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="gallery" class="py-20">
+            <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-2 text-sky-800">Galeri Kami</h2>
+                <p class="text-center text-slate-600 mb-12">Klik pada gambar untuk melihat lebih detail.</p>
+                
+                <div id="image-gallery" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <!-- Images will be dynamically added here, but we can put placeholders -->
+                    <div class="group cursor-pointer">
+                        <img src="https://picsum.photos/seed/flower1/400/600" alt="Contoh Papan Bunga 1" class="gallery-item w-full h-full object-cover rounded-lg shadow-md transition duration-300 group-hover:shadow-xl group-hover:scale-105 aspect-[2/3]">
+                    </div>
+                    <div class="group cursor-pointer">
+                        <img src="https://picsum.photos/seed/flower2/400/600" alt="Contoh Papan Bunga 2" class="gallery-item w-full h-full object-cover rounded-lg shadow-md transition duration-300 group-hover:shadow-xl group-hover:scale-105 aspect-[2/3]">
+                    </div>
+                    <div class="group cursor-pointer">
+                        <img src="https://picsum.photos/seed/flower3/400/600" alt="Contoh Papan Bunga 3" class="gallery-item w-full h-full object-cover rounded-lg shadow-md transition duration-300 group-hover:shadow-xl group-hover:scale-105 aspect-[2/3]">
+                    </div>
+                    <div class="group cursor-pointer">
+                        <img src="https://picsum.photos/seed/flower4/400/600" alt="Contoh Papan Bunga 4" class="gallery-item w-full h-full object-cover rounded-lg shadow-md transition duration-300 group-hover:shadow-xl group-hover:scale-105 aspect-[2/3]">
+                    </div>
+                    <div class="group cursor-pointer">
+                        <img src="https://picsum.photos/seed/flower5/400/600" alt="Contoh Papan Bunga 5" class="gallery-item w-full h-full object-cover rounded-lg shadow-md transition duration-300 group-hover:shadow-xl group-hover:scale-105 aspect-[2/3]">
+                    </div>
+                    <div class="group cursor-pointer">
+                        <img src="https://picsum.photos/seed/flower6/400/600" alt="Contoh Papan Bunga 6" class="gallery-item w-full h-full object-cover rounded-lg shadow-md transition duration-300 group-hover:shadow-xl group-hover:scale-105 aspect-[2/3]">
+                    </div>
+                    <div class="group cursor-pointer">
+                        <img src="https://picsum.photos/seed/flower7/400/600" alt="Contoh Papan Bunga 7" class="gallery-item w-full h-full object-cover rounded-lg shadow-md transition duration-300 group-hover:shadow-xl group-hover:scale-105 aspect-[2/3]">
+                    </div>
+                    <div class="group cursor-pointer">
+                        <img src="https://picsum.photos/seed/flower8/400/600" alt="Contoh Papan Bunga 8" class="gallery-item w-full h-full object-cover rounded-lg shadow-md transition duration-300 group-hover:shadow-xl group-hover:scale-105 aspect-[2/3]">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 bg-sky-100">
+            <div class="container mx-auto px-6 text-center">
+                <h2 class="text-3xl font-bold text-sky-800 mb-4">Hubungi Kami</h2>
+                <p class="text-slate-600 mb-8 max-w-2xl mx-auto">Siap untuk memesan atau ingin bertanya lebih lanjut? Hubungi kami melalui kontak di bawah ini.</p>
+                <div class="flex flex-col md:flex-row justify-center items-center space-y-6 md:space-y-0 md:space-x-10">
+                    <a href="https://wa.me/6281234567890" target="_blank" class="flex items-center text-lg font-medium text-slate-700 hover:text-sky-600 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-3 text-green-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M18 10c0 4.418-3.582 8-8 8s-8-3.582-8-8 3.582-8 8-8 8 3.582 8 8zm-4.664-4.336a.75.75 0 00-1.21-.882l-5.5 7.5a.75.75 0 00.434 1.218l.39-.065a.75.75 0 00.684-.856l-.33-2.178 4.25-2.55a.75.75 0 00-.658-1.285l-4.45.89a.75.75 0 00-.596.745l.33 2.178a.75.75 0 001.21.882l5.5-7.5a.75.75 0 00-.434-1.218l-.39.065a.75.75 0 00-.684.856l.33 2.178-4.25 2.55a.75.75 0 00.658 1.285l4.45-.89a.75.75 0 00.596-.745l-.33-2.178z" clip-rule="evenodd" /></svg>
+                        <span>0812-3456-7890 (WhatsApp)</span>
+                    </a>
+                    <a href="https://instagram.com/rizkiflorist" target="_blank" class="flex items-center text-lg font-medium text-slate-700 hover:text-sky-600 transition">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-3 text-pink-500" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 5a5 5 0 100 10 5 5 0 000-10zm0 8a3 3 0 110-6 3 3 0 010 6zm5-8a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" /><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM3 10a7 7 0 1114 0 7 7 0 01-14 0z" /></svg>
+                        <span>@rizkiflorist</span>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-sky-800 text-white py-6">
+        <div class="container mx-auto px-6 text-center">
+            <p>&copy; 2025 Rizki Florist. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Modal for Image Gallery -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-75 z-50 flex justify-center items-center p-4 hidden modal-enter">
+        <div class="relative bg-white p-2 rounded-lg shadow-2xl max-w-4xl max-h-[90vh]">
+            <img id="modal-img" src="" alt="Detail Papan Bunga" class="object-contain max-h-[85vh] rounded">
+            
+            <!-- Close Button -->
+            <button id="modal-close" class="absolute -top-4 -right-4 bg-white text-sky-800 rounded-full h-10 w-10 flex items-center justify-center text-2xl font-bold shadow-lg hover:bg-sky-100 transition">&times;</button>
+            
+            <!-- Prev Button -->
+            <button id="modal-prev" class="absolute top-1/2 left-4 -translate-y-1/2 bg-white/70 text-sky-800 rounded-full h-12 w-12 flex items-center justify-center text-3xl font-bold shadow-lg hover:bg-white transition">&lsaquo;</button>
+            
+            <!-- Next Button -->
+            <button id="modal-next" class="absolute top-1/2 right-4 -translate-y-1/2 bg-white/70 text-sky-800 rounded-full h-12 w-12 flex items-center justify-center text-3xl font-bold shadow-lg hover:bg-white transition">&rsaquo;</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-img');
+            const modalClose = document.getElementById('modal-close');
+            const modalPrev = document.getElementById('modal-prev');
+            const modalNext = document.getElementById('modal-next');
+
+            const imageSources = Array.from(galleryItems).map(item => item.src);
+            let currentIndex = 0;
+
+            function showModal(index) {
+                currentIndex = index;
+                modalImg.src = imageSources[currentIndex];
+                modal.classList.remove('hidden');
+                setTimeout(() => modal.classList.add('modal-enter-active'), 10);
+            }
+
+            function hideModal() {
+                modal.classList.remove('modal-enter-active');
+                modal.classList.add('modal-leave-active');
+                setTimeout(() => {
+                    modal.classList.add('hidden');
+                    modal.classList.remove('modal-leave-active');
+                }, 300);
+            }
+
+            galleryItems.forEach((item, index) => {
+                item.parentElement.addEventListener('click', () => {
+                    showModal(index);
+                });
+            });
+
+            modalPrev.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + imageSources.length) % imageSources.length;
+                modalImg.src = imageSources[currentIndex];
+            });
+
+            modalNext.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % imageSources.length;
+                modalImg.src = imageSources[currentIndex];
+            });
+
+            modalClose.addEventListener('click', hideModal);
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    hideModal();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (modal.classList.contains('hidden')) return;
+                if (e.key === 'Escape') {
+                    hideModal();
+                }
+                if (e.key === 'ArrowLeft') {
+                    modalPrev.click();
+                }
+                if (e.key === 'ArrowRight') {
+                    modalNext.click();
+                }
+            });
+        });
+    </script>
+
+</body>
+</html>

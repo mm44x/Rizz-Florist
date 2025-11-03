@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizz Florist - Papan Bunga Berkualitas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Menambahkan transisi halus untuk modal */
+        #modal {
+            transition: opacity 0.3s ease-in-out;
+        }
+        .gallery-item {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-item:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body class="bg-sky-50 font-sans text-gray-800">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-40">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold text-sky-700">Rizz Florist</h1>
+            <nav>
+                <ul class="flex space-x-6">
+                    <li><a href="#" class="text-gray-600 hover:text-sky-600 transition">Home</a></li>
+                    <li><a href="#galeri" class="text-gray-600 hover:text-sky-600 transition">Galeri</a></li>
+                    <li><a href="#kontak" class="text-gray-600 hover:text-sky-600 transition">Kontak</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="text-center py-20 px-6 bg-white">
+            <h2 class="text-4xl font-extrabold text-sky-800 tracking-tight">Selamat Datang di Rizz Florist</h2>
+            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
+                Kami menyediakan papan bunga ucapan berkualitas untuk berbagai acara, mulai dari pernikahan, duka cita, hingga peresmian usaha. Setiap rangkaian dibuat dengan sentuhan personal dan material terbaik.
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#galeri" class="inline-block bg-sky-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-sky-700 transition shadow-lg w-full sm:w-auto">
+                    Lihat Karya Kami
+                </a>
+                <a href="https://wa.me/6282322130101" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center bg-green-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-600 transition shadow-lg w-full sm:w-auto">
+                    <!-- Ganti dengan nomor Anda -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.61 15.36 3.5 16.86L2.45 20.55L6.3 19.54C7.75 20.38 9.34 20.86 11.04 20.86H12.04C17.5 20.86 21.95 16.41 21.95 10.95C21.95 5.49 17.5 1 12.04 1ZM12.04 20.86C10.44 20.86 8.89 20.41 7.54 19.57L7.27 19.42L3.82 20.33L4.75 17.03L4.58 16.75C3.65 15.33 3.13 13.68 3.13 11.96C3.13 6.99 7.11 3 12.04 3C14.46 3 16.63 3.95 18.27 5.59C19.91 7.23 20.86 9.4 20.86 11.82C20.86 16.79 16.88 20.86 12.04 20.86ZM17.48 14.53C17.23 14.41 16.04 13.85 15.82 13.77C15.59 13.68 15.42 13.64 15.26 13.89C15.1 14.14 14.6 14.7 14.46 14.86C14.32 15.02 14.18 15.04 13.93 14.91C13.68 14.79 12.92 14.54 12.02 13.74C11.28 13.08 10.79 12.28 10.65 12.03C10.51 11.78 10.63 11.66 10.75 11.54C10.86 11.42 11.01 11.25 11.13 11.11C11.25 10.97 11.3 10.85 11.42 10.65C11.53 10.45 11.48 10.28 11.41 10.16C11.35 10.04 10.85 8.78 10.65 8.28C10.45 7.78 10.26 7.85 10.12 7.85C9.98 7.85 9.82 7.85 9.66 7.85C9.5 7.85 9.22 7.93 9 8.18C8.78 8.43 8.24 8.93 8.24 10.13C8.24 11.33 9.02 12.47 9.14 12.63C9.26 12.79 10.85 15.23 13.22 16.19C15.59 17.15 15.59 16.78 15.94 16.74C16.29 16.7 17.23 16.14 17.43 15.53C17.63 14.92 17.63 14.39 17.55 14.27C17.48 14.14 17.35 14.06 17.1 13.93Z"/></svg>
+                    Pesan Sekarang
+                </a>
+            </div>
+        </section>
+
+        <!-- Gallery Section -->
+        <section id="galeri" class="py-20 px-6">
+            <div class="container mx-auto">
+                <h3 class="text-3xl font-bold text-center mb-12 text-sky-800">Galeri Papan Bunga</h3>
+                <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img1.jpeg" alt="Papan Bunga 1" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img2.jpeg" alt="Papan Bunga 2" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img3.jpeg" alt="Papan Bunga 3" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img4.jpeg" alt="Papan Bunga 4" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img5.jpeg" alt="Papan Bunga 5" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img6.jpeg" alt="Papan Bunga 6" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img7.jpeg" alt="Papan Bunga 7" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img8.jpeg" alt="Papan Bunga 8" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img9.jpeg" alt="Papan Bunga 9" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img10.jpeg" alt="Papan Bunga 10" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img11.jpeg" alt="Papan Bunga 11" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img12.jpeg" alt="Papan Bunga 12" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img13.jpeg" alt="Papan Bunga 13" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img14.jpeg" alt="Papan Bunga 14" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img15.jpeg" alt="Papan Bunga 15" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img16.jpeg" alt="Papan Bunga 16" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img17.jpeg" alt="Papan Bunga 17" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img18.jpeg" alt="Papan Bunga 18" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img19.jpeg" alt="Papan Bunga 19" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img20.jpeg" alt="Papan Bunga 20" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img21.jpeg" alt="Papan Bunga 21" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img22.jpeg" alt="Papan Bunga 22" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img23.jpeg" alt="Papan Bunga 23" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img24.jpeg" alt="Papan Bunga 24" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img25.jpeg" alt="Papan Bunga 25" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img26.jpeg" alt="Papan Bunga 26" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img27.jpeg" alt="Papan Bunga 27" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img28.jpeg" alt="Papan Bunga 28" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img29.jpeg" alt="Papan Bunga 29" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img30.jpeg" alt="Papan Bunga 30" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img31.jpeg" alt="Papan Bunga 31" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img32.jpeg" alt="Papan Bunga 32" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img33.jpeg" alt="Papan Bunga 33" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img34.jpeg" alt="Papan Bunga 34" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img35.jpeg" alt="Papan Bunga 35" class="w-full h-full object-cover"></div>
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img36.jpeg" alt="Papan Bunga 36" class="w-full h-full object-cover"></div>
+                </div>
+                <div class="text-center mt-12">
+                    <button id="load-more-btn" class="bg-sky-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-sky-700 transition shadow-lg">
+                        Lihat Lebih Banyak Foto
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer id="kontak" class="bg-sky-800 text-white mt-12">
+        <div class="container mx-auto px-6 py-10 text-center">
+            <h4 class="text-2xl font-bold mb-4">Hubungi Kami</h4>
+            <p class="mb-2">Pesan papan bunga Anda sekarang juga!</p>
+            <div class="mt-4 space-y-2">
+                <p><strong>Email:</strong> rizzflorist12@gmail.com</p>
+                <p><strong>Telepon:</strong> 082322130101</p>
+                <p><strong>Instagram:</strong> @rizz_florist</p>
+                <!-- <p><strong>Alamat:</strong> Jl. Kenanga No. 123, Jakarta, Indonesia</p> -->
+            </div>
+            <div class="mt-8 border-t border-sky-700 pt-6">
+                <p>&copy; 2025 Rizz Florist. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modal / Lightbox -->
+    <div id="modal" class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center p-4 z-50 hidden opacity-0">
+        <div class="relative max-w-3xl max-h-full">
+            <img id="modal-img" src="" alt="Tampilan besar papan bunga" class="rounded-lg shadow-2xl">
+            <button id="close-modal" class="absolute -top-4 -right-4 text-white bg-sky-600 rounded-full h-10 w-10 flex items-center justify-center text-2xl font-bold hover:bg-sky-700">&times;</button>
+            <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full h-12 w-12 flex items-center justify-center text-3xl hover:bg-opacity-75">&#10094;</button>
+            <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full h-12 w-12 flex items-center justify-center text-3xl hover:bg-opacity-75">&#10095;</button>
+        </div>
+    </div>
+
+    <!-- Tombol Chat WhatsApp -->
+    <a href="https://wa.me/6282322130101" target="_blank" rel="noopener noreferrer" class="fixed bottom-8 right-8 bg-green-500 text-white px-5 py-3 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-transform hover:scale-110 z-40">
+        <!-- Ganti 6282322130101 dengan nomor WhatsApp Anda -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.61 15.36 3.5 16.86L2.45 20.55L6.3 19.54C7.75 20.38 9.34 20.86 11.04 20.86H12.04C17.5 20.86 21.95 16.41 21.95 10.95C21.95 5.49 17.5 1 12.04 1ZM12.04 20.86C10.44 20.86 8.89 20.41 7.54 19.57L7.27 19.42L3.82 20.33L4.75 17.03L4.58 16.75C3.65 15.33 3.13 13.68 3.13 11.96C3.13 6.99 7.11 3 12.04 3C14.46 3 16.63 3.95 18.27 5.59C19.91 7.23 20.86 9.4 20.86 11.82C20.86 16.79 16.88 20.86 12.04 20.86ZM17.48 14.53C17.23 14.41 16.04 13.85 15.82 13.77C15.59 13.68 15.42 13.64 15.26 13.89C15.1 14.14 14.6 14.7 14.46 14.86C14.32 15.02 14.18 15.04 13.93 14.91C13.68 14.79 12.92 14.54 12.02 13.74C11.28 13.08 10.79 12.28 10.65 12.03C10.51 11.78 10.63 11.66 10.75 11.54C10.86 11.42 11.01 11.25 11.13 11.11C11.25 10.97 11.3 10.85 11.42 10.65C11.53 10.45 11.48 10.28 11.41 10.16C11.35 10.04 10.85 8.78 10.65 8.28C10.45 7.78 10.26 7.85 10.12 7.85C9.98 7.85 9.82 7.85 9.66 7.85C9.5 7.85 9.22 7.93 9 8.18C8.78 8.43 8.24 8.93 8.24 10.13C8.24 11.33 9.02 12.47 9.14 12.63C9.26 12.79 10.85 15.23 13.22 16.19C15.59 17.15 15.59 16.78 15.94 16.74C16.29 16.7 17.23 16.14 17.43 15.53C17.63 14.92 17.63 14.39 17.55 14.27C17.48 14.14 17.35 14.06 17.1 13.93Z"/>
+        </svg>
+        <span class="font-semibold text-base">Pesan Sekarang</span>
+    </a>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Modal functionality
+            const galleryItems = document.querySelectorAll('.gallery-item img');
+            const modal = document.getElementById('modal');
+            const modalImg = document.getElementById('modal-img');
+            const closeModalBtn = document.getElementById('close-modal');
+            const nextBtn = document.getElementById('next-btn');
+            const prevBtn = document.getElementById('prev-btn');
+
+            const galleryImageSources = Array.from(galleryItems).map(img => img.src);
+            let currentIndex = 0;
+
+            function showModal(index) {
+                currentIndex = index;
+                modalImg.src = galleryImageSources[currentIndex];
+                modal.classList.remove('hidden');
+                setTimeout(() => modal.classList.remove('opacity-0'), 10);
+            }
+
+            function hideModal() {
+                modal.classList.add('opacity-0');
+                setTimeout(() => modal.classList.add('hidden'), 300);
+            }
+
+            function showNextImage() {
+                currentIndex = (currentIndex + 1) % galleryImageSources.length;
+                modalImg.src = galleryImageSources[currentIndex];
+            }
+
+            function showPrevImage() {
+                currentIndex = (currentIndex - 1 + galleryImageSources.length) % galleryImageSources.length;
+                modalImg.src = galleryImageSources[currentIndex];
+            }
+
+            document.querySelectorAll('.gallery-item').forEach(item => {
+                item.addEventListener('click', () => {
+                    const clickedSrc = item.querySelector('img').src;
+                    const actualIndex = galleryImageSources.findIndex(src => src === clickedSrc);
+                    showModal(actualIndex);
+                });
+            });
+
+            closeModalBtn.addEventListener('click', hideModal);
+            nextBtn.addEventListener('click', showNextImage);
+            prevBtn.addEventListener('click', showPrevImage);
+
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    hideModal();
+                }
+            });
+
+            document.addEventListener('keydown', (e) => {
+                if (modal.classList.contains('hidden')) return;
+                if (e.key === 'ArrowRight') {
+                    showNextImage();
+                } else if (e.key === 'ArrowLeft') {
+                    showPrevImage();
+                } else if (e.key === 'Escape') {
+                    hideModal();
+                }
+            });
+
+            // Load more button functionality
+            const loadMoreBtn = document.getElementById('load-more-btn');
+            const extraImages = document.querySelectorAll('.extra-image');
+
+            loadMoreBtn.addEventListener('click', () => {
+                extraImages.forEach(item => {
+                    item.classList.remove('hidden');
+                });
+                loadMoreBtn.style.display = 'none';
+            });
+        });
+    </script>
+
+</body>
+</html>
