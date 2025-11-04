@@ -25,17 +25,294 @@
     <meta name="twitter:image" content="img/img1.jpeg">
     <title>Rizz Florist - Papan Bunga Berkualitas</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        /* Menambahkan transisi halus untuk modal */
-        #modal {
-            transition: opacity 0.3s ease-in-out;
+        * {
+            scroll-behavior: smooth;
         }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
+
+        /* Header dengan glassmorphism effect */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Hero section dengan gradient dan animasi */
+        .hero-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(1px);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Animasi fade in untuk elemen */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        /* Gallery item dengan efek lebih menarik */
         .gallery-item {
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border-radius: 12px;
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+            aspect-ratio: 1;
         }
+
+        .gallery-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .gallery-item:hover::before {
+            opacity: 1;
+        }
+
+        .gallery-item img {
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
         .gallery-item:hover {
-            transform: scale(1.05);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* Pricing cards dengan design lebih menarik */
+        .pricing-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 2px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .pricing-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            transform: scaleX(0);
+            transition: transform 0.4s ease;
+        }
+
+        .pricing-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        /* Button dengan efek glassmorphism */
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn-primary::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        .btn-primary:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn-primary span {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Modal dengan animasi lebih smooth */
+        #modal {
+            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* WhatsApp button dengan animasi pulse */
+        .whatsapp-btn {
+            animation: pulse 2s infinite;
+            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
+            }
+            50% {
+                box-shadow: 0 10px 40px rgba(37, 211, 102, 0.6);
+            }
+        }
+
+        /* Section dengan pattern background */
+        .section-pattern {
+            position: relative;
+        }
+
+        .section-pattern::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        /* Footer dengan gradient */
+        footer {
+            background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.3;
+        }
+
+        footer > * {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Navbar links dengan efek underline */
+        nav a {
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            transition: width 0.3s ease;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Load more button */
+        #load-more-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        #load-more-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.3);
+            transform: translate(-50%, -50%);
+            transition: width 0.6s, height 0.6s;
+        }
+
+        #load-more-btn:hover::before {
+            width: 300px;
+            height: 300px;
+        }
+
+        #load-more-btn span {
+            position: relative;
+            z-index: 1;
         }
     </style>
 
@@ -67,18 +344,18 @@
     }
     </script>
 </head>
-<body class="bg-sky-50 font-sans text-gray-800">
+<body class="bg-gradient-to-br from-sky-50 via-purple-50 to-pink-50 text-gray-800">
 
     <!-- Header -->
-    <header class="bg-white shadow-md sticky top-0 z-40">
+    <header class="sticky top-0 z-40">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold text-sky-700">Rizz Florist</h1>
+            <h1 class="text-3xl font-bold bg-gradient-to-r from-sky-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">🌸 Rizz Florist</h1>
             <nav aria-label="Navigasi utama">
-                <ul class="flex space-x-6">
-                    <li><a href="#" class="text-gray-600 hover:text-sky-600 transition">Home</a></li>
-                    <li><a href="#galeri" class="text-gray-600 hover:text-sky-600 transition">Galeri</a></li>
-                    <li><a href="#pricing" class="text-gray-600 hover:text-sky-600 transition">Pricing</a></li>
-                    <li><a href="#kontak" class="text-gray-600 hover:text-sky-600 transition">Kontak</a></li>
+                <ul class="flex space-x-8">
+                    <li><a href="#" class="text-gray-700 hover:text-purple-600 transition font-medium">Home</a></li>
+                    <li><a href="#galeri" class="text-gray-700 hover:text-purple-600 transition font-medium">Galeri</a></li>
+                    <li><a href="#pricing" class="text-gray-700 hover:text-purple-600 transition font-medium">Pricing</a></li>
+                    <li><a href="#kontak" class="text-gray-700 hover:text-purple-600 transition font-medium">Kontak</a></li>
                 </ul>
             </nav>
         </div>
@@ -87,69 +364,71 @@
     <!-- Main Content -->
     <main>
         <!-- Hero Section -->
-        <section class="text-center py-20 px-6 bg-white">
-            <h2 class="text-4xl font-extrabold text-sky-800 tracking-tight">Selamat Datang di Rizz Florist</h2>
-            <h2 class="text-4xl font-extrabold text-sky-800 tracking-tight">Pusat Karangan Bunga Jabodetabek</h2>
-            <p class="mt-4 max-w-2xl mx-auto text-lg text-gray-600">
-                Kami menyediakan papan bunga ucapan berkualitas untuk berbagai acara, mulai dari pernikahan, duka cita, hingga peresmian usaha. Setiap rangkaian dibuat dengan sentuhan personal dan material terbaik.
-            </p>
-            <div class="mt-8 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#galeri" class="inline-block bg-sky-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-sky-700 transition shadow-lg w-full sm:w-auto">
-                    Lihat Karya Kami
-                </a>
-                <a href="https://wa.me/6282322130101" target="_blank" rel="noopener noreferrer" aria-label="Pesan via WhatsApp Rizz Florist" class="inline-flex items-center justify-center bg-green-500 text-white font-bold py-3 px-8 rounded-lg hover:bg-green-600 transition shadow-lg w-full sm:w-auto">
-                    <!-- Ganti dengan nomor Anda -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.61 15.36 3.5 16.86L2.45 20.55L6.3 19.54C7.75 20.38 9.34 20.86 11.04 20.86H12.04C17.5 20.86 21.95 16.41 21.95 10.95C21.95 5.49 17.5 1 12.04 1ZM12.04 20.86C10.44 20.86 8.89 20.41 7.54 19.57L7.27 19.42L3.82 20.33L4.75 17.03L4.58 16.75C3.65 15.33 3.13 13.68 3.13 11.96C3.13 6.99 7.11 3 12.04 3C14.46 3 16.63 3.95 18.27 5.59C19.91 7.23 20.86 9.4 20.86 11.82C20.86 16.79 16.88 20.86 12.04 20.86ZM17.48 14.53C17.23 14.41 16.04 13.85 15.82 13.77C15.59 13.68 15.42 13.64 15.26 13.89C15.1 14.14 14.6 14.7 14.46 14.86C14.32 15.02 14.18 15.04 13.93 14.91C13.68 14.79 12.92 14.54 12.02 13.74C11.28 13.08 10.79 12.28 10.65 12.03C10.51 11.78 10.63 11.66 10.75 11.54C10.86 11.42 11.01 11.25 11.13 11.11C11.25 10.97 11.3 10.85 11.42 10.65C11.53 10.45 11.48 10.28 11.41 10.16C11.35 10.04 10.85 8.78 10.65 8.28C10.45 7.78 10.26 7.85 10.12 7.85C9.98 7.85 9.82 7.85 9.66 7.85C9.5 7.85 9.22 7.93 9 8.18C8.78 8.43 8.24 8.93 8.24 10.13C8.24 11.33 9.02 12.47 9.14 12.63C9.26 12.79 10.85 15.23 13.22 16.19C15.59 17.15 15.59 16.78 15.94 16.74C16.29 16.7 17.23 16.14 17.43 15.53C17.63 14.92 17.63 14.39 17.55 14.27C17.48 14.14 17.35 14.06 17.1 13.93Z"/></svg>
-                    Pesan Sekarang
-                </a>
+        <section class="hero-section text-white py-24 px-6">
+            <div class="hero-content container mx-auto max-w-4xl text-center fade-in-up">
+                <h2 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight drop-shadow-lg">Selamat Datang di Rizz Florist</h2>
+                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight drop-shadow-lg">Pusat Karangan Bunga Jabodetabek</h2>
+                <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-white/90 leading-relaxed">
+                    Kami menyediakan papan bunga ucapan berkualitas untuk berbagai acara, mulai dari pernikahan, duka cita, hingga peresmian usaha. Setiap rangkaian dibuat dengan sentuhan personal dan material terbaik.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="#galeri" class="btn-primary inline-block text-white font-bold py-4 px-10 rounded-xl w-full sm:w-auto">
+                        <span>Lihat Karya Kami</span>
+                    </a>
+                    <a href="https://wa.me/6282322130101" target="_blank" rel="noopener noreferrer" aria-label="Pesan via WhatsApp Rizz Florist" class="inline-flex items-center justify-center bg-green-500 text-white font-bold py-4 px-10 rounded-xl hover:bg-green-600 transition-all shadow-lg hover:shadow-xl hover:scale-105 w-full sm:w-auto">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.61 15.36 3.5 16.86L2.45 20.55L6.3 19.54C7.75 20.38 9.34 20.86 11.04 20.86H12.04C17.5 20.86 21.95 16.41 21.95 10.95C21.95 5.49 17.5 1 12.04 1ZM12.04 20.86C10.44 20.86 8.89 20.41 7.54 19.57L7.27 19.42L3.82 20.33L4.75 17.03L4.58 16.75C3.65 15.33 3.13 13.68 3.13 11.96C3.13 6.99 7.11 3 12.04 3C14.46 3 16.63 3.95 18.27 5.59C19.91 7.23 20.86 9.4 20.86 11.82C20.86 16.79 16.88 20.86 12.04 20.86ZM17.48 14.53C17.23 14.41 16.04 13.85 15.82 13.77C15.59 13.68 15.42 13.64 15.26 13.89C15.1 14.14 14.6 14.7 14.46 14.86C14.32 15.02 14.18 15.04 13.93 14.91C13.68 14.79 12.92 14.54 12.02 13.74C11.28 13.08 10.79 12.28 10.65 12.03C10.51 11.78 10.63 11.66 10.75 11.54C10.86 11.42 11.01 11.25 11.13 11.11C11.25 10.97 11.3 10.85 11.42 10.65C11.53 10.45 11.48 10.28 11.41 10.16C11.35 10.04 10.85 8.78 10.65 8.28C10.45 7.78 10.26 7.85 10.12 7.85C9.98 7.85 9.82 7.85 9.66 7.85C9.5 7.85 9.22 7.93 9 8.18C8.78 8.43 8.24 8.93 8.24 10.13C8.24 11.33 9.02 12.47 9.14 12.63C9.26 12.79 10.85 15.23 13.22 16.19C15.59 17.15 15.59 16.78 15.94 16.74C16.29 16.7 17.23 16.14 17.43 15.53C17.63 14.92 17.63 14.39 17.55 14.27C17.48 14.14 17.35 14.06 17.1 13.93Z"/></svg>
+                        Pesan Sekarang
+                    </a>
+                </div>
             </div>
         </section>
 
         <!-- Gallery Section -->
-        <section id="galeri" class="py-20 px-6">
+        <section id="galeri" class="py-20 px-6 section-pattern">
             <div class="container mx-auto">
-                <h3 class="text-3xl font-bold text-center mb-12 text-sky-800">Galeri Papan Bunga</h3>
+                <h3 class="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-sky-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Galeri Papan Bunga</h3>
+                <p class="text-center text-gray-600 mb-12 text-lg">Karya-karya terbaik kami yang telah dipercaya oleh pelanggan</p>
                 <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img1.jpeg" alt="Papan bunga Rizz Florist 1" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img2.jpeg" alt="Papan bunga Rizz Florist 2" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img3.jpeg" alt="Papan bunga Rizz Florist 3" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img4.jpeg" alt="Papan bunga Rizz Florist 4" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img5.jpeg" alt="Papan bunga Rizz Florist 5" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img6.jpeg" alt="Papan bunga Rizz Florist 6" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img7.jpeg" alt="Papan bunga Rizz Florist 7" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item"><img src="img/img8.jpeg" alt="Papan bunga Rizz Florist 8" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img9.jpeg" alt="Papan bunga Rizz Florist 9" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img10.jpeg" alt="Papan bunga Rizz Florist 10" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img11.jpeg" alt="Papan bunga Rizz Florist 11" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img12.jpeg" alt="Papan bunga Rizz Florist 12" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img13.jpeg" alt="Papan bunga Rizz Florist 13" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img14.jpeg" alt="Papan bunga Rizz Florist 14" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img15.jpeg" alt="Papan bunga Rizz Florist 15" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img16.jpeg" alt="Papan bunga Rizz Florist 16" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img17.jpeg" alt="Papan bunga Rizz Florist 17" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img18.jpeg" alt="Papan bunga Rizz Florist 18" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img19.jpeg" alt="Papan bunga Rizz Florist 19" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img20.jpeg" alt="Papan bunga Rizz Florist 20" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img21.jpeg" alt="Papan bunga Rizz Florist 21" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img22.jpeg" alt="Papan bunga Rizz Florist 22" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img23.jpeg" alt="Papan bunga Rizz Florist 23" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img24.jpeg" alt="Papan bunga Rizz Florist 24" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img25.jpeg" alt="Papan bunga Rizz Florist 25" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img26.jpeg" alt="Papan bunga Rizz Florist 26" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img27.jpeg" alt="Papan bunga Rizz Florist 27" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img28.jpeg" alt="Papan bunga Rizz Florist 28" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img29.jpeg" alt="Papan bunga Rizz Florist 29" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img30.jpeg" alt="Papan bunga Rizz Florist 30" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img31.jpeg" alt="Papan bunga Rizz Florist 31" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img32.jpeg" alt="Papan bunga Rizz Florist 32" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img33.jpeg" alt="Papan bunga Rizz Florist 33" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img34.jpeg" alt="Papan bunga Rizz Florist 34" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img35.jpeg" alt="Papan bunga Rizz Florist 35" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
-                    <div class="bg-white rounded-lg overflow-hidden shadow-lg cursor-pointer gallery-item extra-image hidden"><img src="img/img36.jpeg" alt="Papan bunga Rizz Florist 36" loading="lazy" decoding="async" class="w-full h-full object-cover"></div>
+                    <div class="bg-white gallery-item"><img src="img/img1.jpeg" alt="Papan bunga Rizz Florist 1" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item"><img src="img/img2.jpeg" alt="Papan bunga Rizz Florist 2" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item"><img src="img/img3.jpeg" alt="Papan bunga Rizz Florist 3" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item"><img src="img/img4.jpeg" alt="Papan bunga Rizz Florist 4" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item"><img src="img/img5.jpeg" alt="Papan bunga Rizz Florist 5" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item"><img src="img/img6.jpeg" alt="Papan bunga Rizz Florist 6" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item"><img src="img/img7.jpeg" alt="Papan bunga Rizz Florist 7" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item"><img src="img/img8.jpeg" alt="Papan bunga Rizz Florist 8" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img9.jpeg" alt="Papan bunga Rizz Florist 9" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img10.jpeg" alt="Papan bunga Rizz Florist 10" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img11.jpeg" alt="Papan bunga Rizz Florist 11" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img12.jpeg" alt="Papan bunga Rizz Florist 12" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img13.jpeg" alt="Papan bunga Rizz Florist 13" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img14.jpeg" alt="Papan bunga Rizz Florist 14" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img15.jpeg" alt="Papan bunga Rizz Florist 15" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img16.jpeg" alt="Papan bunga Rizz Florist 16" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img17.jpeg" alt="Papan bunga Rizz Florist 17" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img18.jpeg" alt="Papan bunga Rizz Florist 18" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img19.jpeg" alt="Papan bunga Rizz Florist 19" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img20.jpeg" alt="Papan bunga Rizz Florist 20" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img21.jpeg" alt="Papan bunga Rizz Florist 21" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img22.jpeg" alt="Papan bunga Rizz Florist 22" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img23.jpeg" alt="Papan bunga Rizz Florist 23" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img24.jpeg" alt="Papan bunga Rizz Florist 24" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img25.jpeg" alt="Papan bunga Rizz Florist 25" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img26.jpeg" alt="Papan bunga Rizz Florist 26" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img27.jpeg" alt="Papan bunga Rizz Florist 27" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img28.jpeg" alt="Papan bunga Rizz Florist 28" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img29.jpeg" alt="Papan bunga Rizz Florist 29" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img30.jpeg" alt="Papan bunga Rizz Florist 30" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img31.jpeg" alt="Papan bunga Rizz Florist 31" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img32.jpeg" alt="Papan bunga Rizz Florist 32" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img33.jpeg" alt="Papan bunga Rizz Florist 33" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img34.jpeg" alt="Papan bunga Rizz Florist 34" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img35.jpeg" alt="Papan bunga Rizz Florist 35" loading="lazy" decoding="async"></div>
+                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img36.jpeg" alt="Papan bunga Rizz Florist 36" loading="lazy" decoding="async"></div>
                 </div>
                 <div class="text-center mt-12">
-                    <button id="load-more-btn" class="bg-sky-600 text-white font-bold py-3 px-8 rounded-lg hover:bg-sky-700 transition shadow-lg">
-                        Lihat Lebih Banyak Foto
+                    <button id="load-more-btn" class="btn-primary bg-gradient-to-r from-sky-600 to-purple-600 text-white font-bold py-4 px-10 rounded-xl hover:from-sky-700 hover:to-purple-700 transition-all shadow-lg">
+                        <span>Lihat Lebih Banyak Foto</span>
                     </button>
                 </div>
             </div>
@@ -158,81 +437,82 @@
         <!-- Pricing Section -->
         <section id="pricing" class="py-20 px-6 bg-white">
             <div class="container mx-auto">
-                <h3 class="text-3xl font-bold text-center mb-12 text-sky-800">Harga Papan Bunga</h3>
+                <h3 class="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-sky-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">Harga Papan Bunga</h3>
+                <p class="text-center text-gray-600 mb-12 text-lg">Pilih paket yang sesuai dengan kebutuhan Anda</p>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     <!-- Pricing Card 1 -->
-                    <div class="bg-sky-50 rounded-lg shadow-lg p-8">
-                        <h4 class="text-2xl font-bold text-sky-700">Papan Bunga 4 Titik</h4>
+                    <div class="pricing-card rounded-xl p-8">
+                        <h4 class="text-2xl font-bold text-sky-700 mb-2">Papan Bunga 4 Titik</h4>
                         <p class="text-lg text-gray-600 mb-4">Ukuran 125x200</p>
-                        <p class="text-4xl font-extrabold text-sky-800 mb-6">Rp. 650.000</p>
-                        <ul class="text-gray-600 space-y-2">
-                            <li>✓ Free Custom</li>
-                            <li>✓ Cocok untuk segala moment</li>
-                            <li>✓ Bunga segar & berkualitas tinggi</li>
-                            <li>✓ Desain elegan</li>
+                        <p class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">Rp. 650.000</p>
+                        <ul class="text-gray-600 space-y-3">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Free Custom</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Cocok untuk segala moment</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Bunga segar & berkualitas tinggi</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Desain elegan</li>
                         </ul>
                     </div>
                     <!-- Pricing Card 2 -->
-                    <div class="bg-sky-50 rounded-lg shadow-lg p-8">
-                        <h4 class="text-2xl font-bold text-sky-700">Papan Bunga Sambung</h4>
+                    <div class="pricing-card rounded-xl p-8">
+                        <h4 class="text-2xl font-bold text-sky-700 mb-2">Papan Bunga Sambung</h4>
                         <p class="text-lg text-gray-600 mb-4">Ukuran 125x400</p>
-                        <p class="text-4xl font-extrabold text-sky-800 mb-6">Rp. 1.300.000</p>
-                        <ul class="text-gray-600 space-y-2">
-                            <li>✓ Papan Bunga Sambung</li>
-                            <li>✓ Free Custom</li>
-                            <li>✓ Cocok untuk segala moment</li>
-                            <li>✓ Bunga segar & berkualitas tinggi</li>
-                            <li>✓ Desain elegan</li>
+                        <p class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">Rp. 1.300.000</p>
+                        <ul class="text-gray-600 space-y-3">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Papan Bunga Sambung</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Free Custom</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Cocok untuk segala moment</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Bunga segar & berkualitas tinggi</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Desain elegan</li>
                         </ul>
                     </div>
                     <!-- Pricing Card 3 -->
-                    <div class="bg-sky-50 rounded-lg shadow-lg p-8">
-                        <h4 class="text-2xl font-bold text-sky-700">Papan Bunga Sambung</h4>
+                    <div class="pricing-card rounded-xl p-8">
+                        <h4 class="text-2xl font-bold text-sky-700 mb-2">Papan Bunga Sambung</h4>
                         <p class="text-lg text-gray-600 mb-4">Ukuran 150x400</p>
-                        <p class="text-4xl font-extrabold text-sky-800 mb-6">Rp. 1.500.000</p>
-                        <ul class="text-gray-600 space-y-2">
-                            <li>✓ Papan Bunga Sambung</li>
-                            <li>✓ Free Custom</li>
-                            <li>✓ Cocok untuk segala moment</li>
-                            <li>✓ Bunga segar & berkualitas tinggi</li>
-                            <li>✓ Desain elegan</li>
+                        <p class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">Rp. 1.500.000</p>
+                        <ul class="text-gray-600 space-y-3">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Papan Bunga Sambung</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Free Custom</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Cocok untuk segala moment</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Bunga segar & berkualitas tinggi</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Desain elegan</li>
                         </ul>
                     </div>
                     <!-- Pricing Card 4 -->
-                    <div class="bg-sky-50 rounded-lg shadow-lg p-8">
-                        <h4 class="text-2xl font-bold text-sky-700">Papan Bunga Besar 4 Titik (kuping Lebar)</h4>
+                    <div class="pricing-card rounded-xl p-8">
+                        <h4 class="text-2xl font-bold text-sky-700 mb-2">Papan Bunga Besar 4 Titik (kuping Lebar)</h4>
                         <p class="text-lg text-gray-600 mb-4">Ukuran 150x200</p>
-                        <p class="text-4xl font-extrabold text-sky-800 mb-6">Rp. 1.200.000</p>
-                        <ul class="text-gray-600 space-y-2">
-                            <li>✓ Kuping Lebar</li>
-                            <li>✓ Free Custom</li>
-                            <li>✓ Cocok untuk segala moment</li>
-                            <li>✓ Bunga segar & berkualitas tinggi</li>
-                            <li>✓ Desain elegan</li>
+                        <p class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">Rp. 1.200.000</p>
+                        <ul class="text-gray-600 space-y-3">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Kuping Lebar</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Free Custom</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Cocok untuk segala moment</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Bunga segar & berkualitas tinggi</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Desain elegan</li>
                         </ul>
                     </div>
                     <!-- Pricing Card 5 -->
-                    <div class="bg-sky-50 rounded-lg shadow-lg p-8">
-                        <h4 class="text-2xl font-bold text-sky-700">Papan Bunga Besar 6 Titik</h4>
+                    <div class="pricing-card rounded-xl p-8">
+                        <h4 class="text-2xl font-bold text-sky-700 mb-2">Papan Bunga Besar 6 Titik</h4>
                         <p class="text-lg text-gray-600 mb-4">Ukuran 150x200</p>
-                        <p class="text-4xl font-extrabold text-sky-800 mb-6">Rp. 1.500.000</p>
-                        <ul class="text-gray-600 space-y-2">
-                            <li>✓ Free Custom</li>
-                            <li>✓ Cocok untuk segala moment</li>
-                            <li>✓ Bunga segar & berkualitas tinggi</li>
-                            <li>✓ Desain elegan</li>
+                        <p class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">Rp. 1.500.000</p>
+                        <ul class="text-gray-600 space-y-3">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Free Custom</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Cocok untuk segala moment</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Bunga segar & berkualitas tinggi</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Desain elegan</li>
                         </ul>
                     </div>
                     <!-- Pricing Card 6 -->
-                    <div class="bg-sky-50 rounded-lg shadow-lg p-8">
-                        <h4 class="text-2xl font-bold text-sky-700">Papan Bunga Standart</h4>
+                    <div class="pricing-card rounded-xl p-8">
+                        <h4 class="text-2xl font-bold text-sky-700 mb-2">Papan Bunga Standart</h4>
                         <p class="text-lg text-gray-600 mb-4">Ukuran 150x200</p>
-                        <p class="text-4xl font-extrabold text-sky-800 mb-6">Rp. 600.000</p>
-                        <ul class="text-gray-600 space-y-2">
-                            <li>✓ Free Custom</li>
-                            <li>✓ Cocok untuk segala moment</li>
-                            <li>✓ Bunga segar & berkualitas tinggi</li>
-                            <li>✓ Desain elegan</li>
+                        <p class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">Rp. 600.000</p>
+                        <ul class="text-gray-600 space-y-3">
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Free Custom</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Cocok untuk segala moment</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Bunga segar & berkualitas tinggi</li>
+                            <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>Desain elegan</li>
                         </ul>
                     </div>
                 </div>
@@ -242,36 +522,35 @@
     </main>
 
     <!-- Footer -->
-    <footer id="kontak" class="bg-sky-800 text-white mt-12">
-        <div class="container mx-auto px-6 py-10 text-center">
-            <h4 class="text-2xl font-bold mb-4">Hubungi Kami</h4>
-            <p class="mb-2">Pesan papan bunga Anda sekarang juga!</p>
-            <div class="mt-4 space-y-2">
-                <p><strong>Email:</strong> rizzflorist12@gmail.com</p>
-                <p><strong>Telepon:</strong> 082322130101</p>
-                <p><strong>Instagram:</strong> @rizz_florist</p>
-                <p><strong>Alamat:</strong> Jakarta, Indonesia</p>
+    <footer class="text-white mt-12">
+        <div class="container mx-auto px-6 py-12 text-center">
+            <h4 class="text-3xl font-bold mb-6">Hubungi Kami</h4>
+            <p class="mb-6 text-lg text-white/90">Pesan papan bunga Anda sekarang juga!</p>
+            <div class="mt-6 space-y-4 text-white/90">
+                <p class="flex items-center justify-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path><path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path></svg><strong>Email:</strong> <a href="mailto:rizzflorist12@gmail.com" class="ml-2 hover:text-white transition">rizzflorist12@gmail.com</a></p>
+                <p class="flex items-center justify-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z"></path></svg><strong>Telepon:</strong> <a href="tel:+6282322130101" class="ml-2 hover:text-white transition">082322130101</a></p>
+                <p class="flex items-center justify-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg><strong>Instagram:</strong> <a href="https://www.instagram.com/rizz_florist" target="_blank" rel="noopener noreferrer" class="ml-2 hover:text-white transition">@rizz_florist</a></p>
+                <p class="flex items-center justify-center"><svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"></path></svg><strong>Alamat:</strong> <span class="ml-2">Jakarta, Indonesia</span></p>
             </div>
-            <div class="mt-8 border-t border-sky-700 pt-6">
-                <p>&copy; 2025 Rizz Florist. All Rights Reserved.</p>
+            <div class="mt-10 border-t border-white/20 pt-6">
+                <p class="text-white/70">&copy; 2025 Rizz Florist. All Rights Reserved.</p>
             </div>
         </div>
     </footer>
 
     <!-- Modal / Lightbox -->
-    <div id="modal" class="fixed inset-0 bg-black bg-opacity-80 flex justify-center items-center p-4 z-50 hidden opacity-0">
-        <div class="relative max-w-3xl max-h-full">
-            <img id="modal-img" src="" alt="Tampilan besar papan bunga" class="rounded-lg shadow-2xl">
-            <button id="close-modal" class="absolute -top-4 -right-4 text-white bg-sky-600 rounded-full h-10 w-10 flex items-center justify-center text-2xl font-bold hover:bg-sky-700">&times;</button>
-            <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full h-12 w-12 flex items-center justify-center text-3xl hover:bg-opacity-75">&#10094;</button>
-            <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black bg-opacity-50 rounded-full h-12 w-12 flex items-center justify-center text-3xl hover:bg-opacity-75">&#10095;</button>
+    <div id="modal" class="fixed inset-0 flex justify-center items-center p-4 z-50 hidden opacity-0">
+        <div class="relative max-w-4xl max-h-full">
+            <img id="modal-img" src="" alt="Tampilan besar papan bunga" class="rounded-xl shadow-2xl max-h-[90vh] object-contain">
+            <button id="close-modal" class="absolute -top-4 -right-4 text-white bg-gradient-to-r from-sky-600 to-purple-600 rounded-full h-12 w-12 flex items-center justify-center text-3xl font-bold hover:from-sky-700 hover:to-purple-700 transition-all shadow-lg">&times;</button>
+            <button id="prev-btn" class="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black/50 backdrop-blur-sm rounded-full h-14 w-14 flex items-center justify-center text-3xl hover:bg-black/70 transition-all">&#10094;</button>
+            <button id="next-btn" class="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black/50 backdrop-blur-sm rounded-full h-14 w-14 flex items-center justify-center text-3xl hover:bg-black/70 transition-all">&#10095;</button>
         </div>
     </div>
 
     <!-- Tombol Chat WhatsApp -->
-    <a href="https://wa.me/6282322130101" target="_blank" rel="noopener noreferrer" aria-label="Buka chat WhatsApp Rizz Florist" class="fixed bottom-8 right-8 bg-green-500 text-white px-5 py-3 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition-transform hover:scale-110 z-40">
-        <!-- Ganti 6282322130101 dengan nomor WhatsApp Anda -->
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3" viewBox="0 0 24 24" fill="currentColor">
+    <a href="https://wa.me/6282322130101" target="_blank" rel="noopener noreferrer" aria-label="Buka chat WhatsApp Rizz Florist" class="whatsapp-btn fixed bottom-8 right-8 bg-green-500 text-white px-6 py-4 rounded-full flex items-center justify-center hover:bg-green-600 transition-transform hover:scale-110 z-40">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mr-3" viewBox="0 0 24 24" fill="currentColor">
             <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.61 15.36 3.5 16.86L2.45 20.55L6.3 19.54C7.75 20.38 9.34 20.86 11.04 20.86H12.04C17.5 20.86 21.95 16.41 21.95 10.95C21.95 5.49 17.5 1 12.04 1ZM12.04 20.86C10.44 20.86 8.89 20.41 7.54 19.57L7.27 19.42L3.82 20.33L4.75 17.03L4.58 16.75C3.65 15.33 3.13 13.68 3.13 11.96C3.13 6.99 7.11 3 12.04 3C14.46 3 16.63 3.95 18.27 5.59C19.91 7.23 20.86 9.4 20.86 11.82C20.86 16.79 16.88 20.86 12.04 20.86ZM17.48 14.53C17.23 14.41 16.04 13.85 15.82 13.77C15.59 13.68 15.42 13.64 15.26 13.89C15.1 14.14 14.6 14.7 14.46 14.86C14.32 15.02 14.18 15.04 13.93 14.91C13.68 14.79 12.92 14.54 12.02 13.74C11.28 13.08 10.79 12.28 10.65 12.03C10.51 11.78 10.63 11.66 10.75 11.54C10.86 11.42 11.01 11.25 11.13 11.11C11.25 10.97 11.3 10.85 11.42 10.65C11.53 10.45 11.48 10.28 11.41 10.16C11.35 10.04 10.85 8.78 10.65 8.28C10.45 7.78 10.26 7.85 10.12 7.85C9.98 7.85 9.82 7.85 9.66 7.85C9.5 7.85 9.22 7.93 9 8.18C8.78 8.43 8.24 8.93 8.24 10.13C8.24 11.33 9.02 12.47 9.14 12.63C9.26 12.79 10.85 15.23 13.22 16.19C15.59 17.15 15.59 16.78 15.94 16.74C16.29 16.7 17.23 16.14 17.43 15.53C17.63 14.92 17.63 14.39 17.55 14.27C17.48 14.14 17.35 14.06 17.1 13.93Z"/>
         </svg>
         <span class="font-semibold text-base">Pesan Sekarang</span>
