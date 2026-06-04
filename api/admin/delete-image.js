@@ -1,5 +1,5 @@
 import { del } from '@vercel/blob';
-import { kv } from '@vercel/kv';
+import { getDbData, setDbData } from './db.js';
 import { verifyAuth, handleUnauthorized } from './auth.js';
 
 export default async function handler(req, res) {
@@ -22,16 +22,16 @@ export default async function handler(req, res) {
       try {
         await del(url);
       } catch (blobError) {
-        console.error("Vercel Blob deletion error (continuing KV update):", blobError);
+        console.error("Vercel Blob deletion error (continuing database update):", blobError);
       }
     }
 
     // Retrieve existing data
-    let data = await kv.get('rizz_florist_data');
+    let data = await getDbData();
     if (data && data.gallery) {
       // Filter out the image from KV
       data.gallery = data.gallery.filter(item => item.url !== url);
-      await kv.set('rizz_florist_data', data);
+      await setDbData(data);
     }
 
     return res.status(200).json({ message: 'Image deleted successfully.', data });

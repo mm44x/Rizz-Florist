@@ -1,5 +1,5 @@
 import { put } from '@vercel/blob';
-import { kv } from '@vercel/kv';
+import { getDbData, setDbData } from './db.js';
 import { verifyAuth, handleUnauthorized } from './auth.js';
 
 export default async function handler(req, res) {
@@ -28,7 +28,7 @@ export default async function handler(req, res) {
     });
 
     // Retrieve existing data
-    let data = await kv.get('rizz_florist_data');
+    let data = await getDbData();
     if (!data) {
       data = { gallery: [], pricing: [], contacts: {} };
     }
@@ -44,7 +44,7 @@ export default async function handler(req, res) {
         data.gallery = [];
       }
       data.gallery.push(newImage);
-      await kv.set('rizz_florist_data', data);
+      await setDbData(data);
     }
 
     return res.status(200).json({ message: 'Image uploaded successfully.', image: newImage, data });

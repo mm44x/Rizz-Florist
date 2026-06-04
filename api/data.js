@@ -1,4 +1,4 @@
-import { kv } from '@vercel/kv';
+import { getDbData, setDbData } from './admin/db.js';
 
 const defaultData = {
   contacts: {
@@ -203,15 +203,15 @@ export default async function handler(req, res) {
   }
 
   try {
-    const data = await kv.get('rizz_florist_data');
+    const data = await getDbData();
     if (!data) {
-      // If data is empty in KV, initialize it with defaultData
-      await kv.set('rizz_florist_data', defaultData);
+      // If data is empty in Redis, initialize it with defaultData
+      await setDbData(defaultData);
       return res.status(200).json(defaultData);
     }
     return res.status(200).json(data);
   } catch (error) {
-    console.error("Vercel KV Error, falling back to static defaults:", error);
+    console.error("Redis Error, falling back to static defaults:", error);
     return res.status(200).json(defaultData);
   }
 }
