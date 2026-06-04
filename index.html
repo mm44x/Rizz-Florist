@@ -1122,7 +1122,8 @@
                 }
                 loadMoreBtn.style.display = 'inline-block';
                 loadMoreBtn.onclick = () => {
-                    extraImages.forEach(item => {
+                    const currentExtraImages = document.querySelectorAll('.extra-image');
+                    currentExtraImages.forEach(item => {
                         item.classList.remove('hidden');
                     });
                     loadMoreBtn.style.display = 'none';
