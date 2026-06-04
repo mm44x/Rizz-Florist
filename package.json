@@ -1,0 +1,14 @@
+{
+  "name": "rizz-florist",
+  "version": "1.0.0",
+  "description": "Rizz Florist Website with Admin Panel",
+  "main": "api/data.js",
+  "type": "module",
+  "scripts": {
+    "dev": "vercel dev"
+  },
+  "dependencies": {
+    "@vercel/blob": "^0.23.3",
+    "@vercel/kv": "^1.0.1"
+  }
+}

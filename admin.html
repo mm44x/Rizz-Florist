@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rizz Florist - Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: radial-gradient(circle at 10% 20%, rgba(18, 16, 33, 1) 0%, rgba(26, 24, 57, 1) 90%);
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .active-tab {
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(168, 85, 247, 0.2) 100%);
+            border-color: rgba(168, 85, 247, 0.4);
+            color: #e9d5ff;
+        }
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.02);
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="min-h-screen text-gray-100 antialiased flex flex-col">
+
+    <!-- Toast Notification -->
+    <div id="toast-container" class="fixed top-6 right-6 z-50 flex flex-col gap-3 pointer-events-none"></div>
+
+    <!-- LOGIN SCREEN -->
+    <div id="login-screen" class="flex-grow flex items-center justify-center p-6">
+        <div class="glass-card w-full max-w-md rounded-2xl p-8 shadow-2xl relative overflow-hidden">
+            <!-- Decorative light effects -->
+            <div class="absolute -top-24 -left-24 w-48 h-48 bg-indigo-500 rounded-full blur-3xl opacity-20"></div>
+            <div class="absolute -bottom-24 -right-24 w-48 h-48 bg-purple-500 rounded-full blur-3xl opacity-20"></div>
+            
+            <div class="relative z-10 text-center mb-8">
+                <span class="text-4xl">🌸</span>
+                <h1 class="text-2xl font-bold mt-3 bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                    Rizz Florist Admin
+                </h1>
+                <p class="text-gray-400 text-sm mt-1">Masukkan password admin untuk masuk ke dashboard</p>
+            </div>
+
+            <form id="login-form" class="space-y-6 relative z-10">
+                <div>
+                    <label class="block text-gray-300 text-sm font-medium mb-2" for="password">Password Admin</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        placeholder="••••••••" 
+                        required
+                        class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-all"
+                    >
+                </div>
+                <button 
+                    type="submit"
+                    class="w-full bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-semibold py-3 px-4 rounded-xl hover:from-indigo-600 hover:to-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 focus:ring-offset-gray-900 transition-all shadow-lg hover:shadow-indigo-500/20 active:scale-[0.98]"
+                >
+                    Masuk ke Dashboard
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- MAIN DASHBOARD -->
+    <div id="dashboard" class="hidden flex-grow flex flex-col">
+        <!-- Navigation Header -->
+        <header class="glass-panel sticky top-0 z-30">
+            <div class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+                <div class="flex items-center space-x-3">
+                    <span class="text-2xl">🌸</span>
+                    <span class="text-xl font-bold bg-gradient-to-r from-indigo-400 via-purple-400 to-pink-400 bg-clip-text text-transparent">
+                        Rizz Florist Admin Panel
+                    </span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="/" target="_blank" class="text-sm text-gray-300 hover:text-white transition flex items-center space-x-1 bg-white/5 hover:bg-white/10 px-3 py-1.5 rounded-lg border border-white/10">
+                        <span>Lihat Web</span>
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path></svg>
+                    </a>
+                    <button id="logout-btn" class="text-sm bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/20 px-3 py-1.5 rounded-lg transition">
+                        Keluar
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Dashboard Layout -->
+        <div class="max-w-7xl mx-auto w-full px-6 py-8 flex-grow flex flex-col md:flex-row gap-8">
+            <!-- Sidebar / Tabs Navigation -->
+            <aside class="md:w-64 flex-shrink-0">
+                <div class="glass-panel p-4 rounded-2xl flex flex-col gap-2">
+                    <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider px-3 mb-2">Menu Kelola</p>
+                    <button onclick="switchTab('tab-gallery')" id="btn-tab-gallery" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl border border-transparent text-gray-300 hover:bg-white/5 transition text-left">
+                        <span class="text-lg">🖼️</span>
+                        <span class="font-medium text-sm">Galeri Foto</span>
+                    </button>
+                    <button onclick="switchTab('tab-pricing')" id="btn-tab-pricing" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl border border-transparent text-gray-300 hover:bg-white/5 transition text-left">
+                        <span class="text-lg">🏷️</span>
+                        <span class="font-medium text-sm">Daftar Harga</span>
+                    </button>
+                    <button onclick="switchTab('tab-contacts')" id="btn-tab-contacts" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl border border-transparent text-gray-300 hover:bg-white/5 transition text-left">
+                        <span class="text-lg">📞</span>
+                        <span class="font-medium text-sm">Informasi Kontak</span>
+                    </button>
+                </div>
+                
+                <div class="mt-4 p-4 rounded-xl border border-indigo-500/20 bg-indigo-500/5 text-xs text-indigo-300">
+                    <p class="font-semibold mb-1">💡 Tips Vercel Database:</p>
+                    <p class="leading-relaxed">Pastikan Anda telah mengisi <code>KV_URL</code> dan <code>BLOB_READ_WRITE_TOKEN</code> pada Environment Variables di dashboard Vercel Anda agar data tersimpan permanen.</p>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="flex-grow flex flex-col min-w-0">
+                <!-- Loading State -->
+                <div id="loading-spinner" class="glass-card flex-grow rounded-2xl p-12 flex flex-col items-center justify-center min-h-[300px]">
+                    <div class="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500 mb-4"></div>
+                    <p class="text-gray-400 text-sm">Mengambil data dari database...</p>
+                </div>
+
+                <!-- Tab: Gallery -->
+                <section id="tab-gallery" class="tab-content hidden space-y-6">
+                    <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                        <div>
+                            <h2 class="text-2xl font-bold text-white">Galeri Foto Papan Bunga</h2>
+                            <p class="text-gray-400 text-sm mt-0.5">Upload dan hapus foto papan bunga yang tampil di halaman depan</p>
+                        </div>
+                        <label class="cursor-pointer bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold py-2.5 px-5 rounded-xl transition flex items-center space-x-2 shadow-lg shadow-indigo-500/10">
+                            <span>📤 Upload Foto Baru</span>
+                            <input type="file" id="gallery-file-input" accept="image/*" class="hidden" onchange="handleImageUpload(event)">
+                        </label>
+                    </div>
+
+                    <!-- Uploading Progress Indicator -->
+                    <div id="upload-progress" class="hidden glass-card p-4 rounded-xl border-indigo-500/30 flex items-center space-x-4">
+                        <div class="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-indigo-400"></div>
+                        <p class="text-sm text-indigo-300">Mengunggah file ke Vercel Blob...</p>
+                    </div>
+
+                    <!-- Gallery Grid -->
+                    <div id="gallery-grid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
+                        <!-- Items populated dynamically -->
+                    </div>
+                </section>
+
+                <!-- Tab: Pricing -->
+                <section id="tab-pricing" class="tab-content hidden space-y-6">
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <h2 class="text-2xl font-bold text-white">Kelola Daftar Harga</h2>
+                            <p class="text-gray-400 text-sm mt-0.5">Atur paket, ukuran, harga, dan fitur papan bunga</p>
+                        </div>
+                        <button onclick="addNewPricingCard()" class="bg-gradient-to-r from-indigo-500 to-purple-600 hover:from-indigo-600 hover:to-purple-700 text-white font-semibold py-2.5 px-5 rounded-xl transition flex items-center space-x-2 shadow-lg">
+                            <span>➕ Tambah Paket</span>
+                        </button>
+                    </div>
+
+                    <!-- Pricing Cards Editor Container -->
+                    <div id="pricing-editor-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Cards populated dynamically -->
+                    </div>
+
+                    <div class="flex justify-end pt-4">
+                        <button onclick="savePricingData()" class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-3 px-8 rounded-xl transition shadow-lg shadow-green-500/10 flex items-center space-x-2">
+                            <span>💾 Simpan Semua Perubahan Harga</span>
+                        </button>
+                    </div>
+                </section>
+
+                <!-- Tab: Contacts -->
+                <section id="tab-contacts" class="tab-content hidden space-y-6">
+                    <div>
+                        <h2 class="text-2xl font-bold text-white">Informasi Kontak</h2>
+                        <p class="text-gray-400 text-sm mt-0.5">Ubah informasi kontak dan sosial media Rizz Florist</p>
+                    </div>
+
+                    <form id="contacts-form" onsubmit="saveContactsData(event)" class="glass-panel rounded-2xl p-6 md:p-8 space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-gray-300 text-sm font-medium mb-2">Email</label>
+                                <input type="email" id="contact-email" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 text-sm font-medium mb-2">Nomor Telepon</label>
+                                <input type="text" id="contact-phone" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 text-sm font-medium mb-2">WhatsApp Link (misal: https://wa.me/6282322130101)</label>
+                                <input type="url" id="contact-whatsapp" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 text-sm font-medium mb-2">Instagram Link</label>
+                                <input type="url" id="contact-instagram" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 text-sm font-medium mb-2">Instagram Username (misal: @rizz_florist.id)</label>
+                                <input type="text" id="contact-instagram-user" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                            <div>
+                                <label class="block text-gray-300 text-sm font-medium mb-2">Lokasi / Alamat</label>
+                                <input type="text" id="contact-address" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:ring-2 focus:ring-purple-500">
+                            </div>
+                        </div>
+
+                        <div class="flex justify-end pt-4 border-t border-white/10">
+                            <button type="submit" class="bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700 text-white font-bold py-3 px-8 rounded-xl transition shadow-lg shadow-green-500/10">
+                                💾 Simpan Kontak
+                            </button>
+                        </div>
+                    </form>
+                </section>
+            </main>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="glass-panel mt-auto py-6">
+        <div class="max-w-7xl mx-auto px-6 text-center text-gray-500 text-xs">
+            &copy; 2026 Rizz Florist Admin Panel. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- Client-Side Dashboard Logic -->
+    <script>
+        let dbData = null;
+        let activeTabId = 'tab-gallery';
+
+        // Check login on load
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('rizz_admin_token');
+            if (token) {
+                showDashboard();
+            } else {
+                showLogin();
+            }
+
+            // Login form handler
+            document.getElementById('login-form').addEventListener('submit', (e) => {
+                e.preventDefault();
+                const pwd = document.getElementById('password').value;
+                // Test authentication by trying to load dashboard data
+                loadDashboardData(pwd);
+            });
+
+            // Logout button
+            document.getElementById('logout-btn').addEventListener('click', () => {
+                localStorage.removeItem('rizz_admin_token');
+                showLogin();
+                showToast('Sukses keluar', 'info');
+            });
+        });
+
+        function showLogin() {
+            document.getElementById('login-screen').classList.remove('hidden');
+            document.getElementById('dashboard').classList.add('hidden');
+            dbData = null;
+        }
+
+        function showDashboard() {
+            document.getElementById('login-screen').classList.add('hidden');
+            document.getElementById('dashboard').classList.remove('hidden');
+            loadDashboardData();
+        }
+
+        function getAuthToken() {
+            return localStorage.getItem('rizz_admin_token') || '';
+        }
+
+        // Fetch all KV data
+        async function loadDashboardData(tempPassword = null) {
+            const pwd = tempPassword || getAuthToken();
+            if (!pwd) return showLogin();
+
+            document.getElementById('loading-spinner').classList.remove('hidden');
+            
+            // Hide all tabs while loading
+            document.querySelectorAll('.tab-content').forEach(t => t.classList.add('hidden'));
+
+            try {
+                const response = await fetch('/api/data');
+                if (!response.ok) throw new Error('Gagal memuat data');
+                
+                dbData = await response.json();
+                
+                // If login was successful, save the token
+                if (tempPassword) {
+                    localStorage.setItem('rizz_admin_token', tempPassword);
+                    showDashboard();
+                    showToast('Login berhasil!', 'success');
+                    return;
+                }
+
+                // Render tabs content
+                renderGallery();
+                renderPricing();
+                renderContacts();
+
+                // Switch to active tab
+                document.getElementById('loading-spinner').classList.add('hidden');
+                switchTab(activeTabId);
+
+            } catch (err) {
+                console.error(err);
+                if (tempPassword) {
+                    showToast('Password salah!', 'error');
+                } else {
+                    showToast('Gagal terhubung ke database. Menampilkan data fallback.', 'warning');
+                    // Render defaults if database fetch failed completely but page was loaded
+                    dbData = { gallery: [], pricing: [], contacts: {} };
+                    document.getElementById('loading-spinner').classList.add('hidden');
+                    switchTab(activeTabId);
+                }
+            }
+        }
+
+        // Switch Tabs UI
+        function switchTab(tabId) {
+            activeTabId = tabId;
+            // Hide all content tabs
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.add('hidden'));
+            // Remove active classes from buttons
+            document.querySelectorAll('aside button').forEach(btn => btn.classList.remove('active-tab'));
+
+            // Show active tab content
+            const activeTab = document.getElementById(tabId);
+            if (activeTab) activeTab.classList.remove('hidden');
+
+            // Set active class to active button
+            const activeBtn = document.getElementById('btn-' + tabId);
+            if (activeBtn) activeBtn.classList.add('active-tab');
+        }
+
+        // --- GALLERY TAB LOGIC ---
+        function renderGallery() {
+            const grid = document.getElementById('gallery-grid');
+            grid.innerHTML = '';
+
+            const items = dbData.gallery || [];
+            if (items.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-12 text-center text-gray-500">
+                        Tidak ada foto dalam galeri. Upload foto baru untuk memulai!
+                    </div>
+                `;
+                return;
+            }
+
+            items.forEach((item, index) => {
+                const isLocal = !item.url.startsWith('http');
+                const card = document.createElement('div');
+                card.className = 'glass-card rounded-xl overflow-hidden group relative aspect-square';
+                card.innerHTML = `
+                    <img src="${item.url}" alt="${item.alt}" class="w-full h-full object-cover transition duration-300 group-hover:scale-105">
+                    <div class="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-200 flex flex-col justify-end p-3">
+                        <p class="text-xs text-gray-300 truncate mb-2" title="${item.alt}">${item.alt}</p>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[10px] px-2 py-0.5 rounded ${isLocal ? 'bg-amber-500/20 text-amber-300 border border-amber-500/20' : 'bg-green-500/20 text-green-300 border border-green-500/20'}">
+                                ${isLocal ? 'Static Local' : 'Vercel Blob'}
+                            </span>
+                            <button onclick="deleteGalleryImage('${item.url}')" class="bg-rose-600 hover:bg-rose-700 text-white rounded-lg p-1.5 transition shadow" title="Hapus Foto">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                            </button>
+                        </div>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // Image upload helper
+        async function handleImageUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            // Maximum size check: 4MB (Vercel Serverless payload limits)
+            if (file.size > 4 * 1024 * 1024) {
+                showToast('Ukuran file maksimal adalah 4MB!', 'error');
+                return;
+            }
+
+            const altText = prompt("Masukkan keterangan foto (Alt text):", "Papan bunga Rizz Florist");
+            if (altText === null) return; // Cancelled
+
+            document.getElementById('upload-progress').classList.remove('hidden');
+
+            try {
+                // Convert file to base64
+                const base64Str = await fileToBase64(file);
+                
+                const response = await fetch('/api/admin/upload-image', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getAuthToken()}`
+                    },
+                    body: JSON.stringify({
+                        filename: file.name,
+                        contentType: file.type,
+                        base64: base64Str,
+                        alt: altText || file.name.split('.')[0]
+                    })
+                });
+
+                const result = await response.json();
+                if (!response.ok) throw new Error(result.error || 'Gagal upload foto');
+
+                dbData = result.data;
+                renderGallery();
+                showToast('Foto berhasil diunggah ke Vercel Blob!', 'success');
+
+            } catch (err) {
+                console.error(err);
+                showToast(err.message || 'Gagal mengunggah foto.', 'error');
+            } finally {
+                document.getElementById('upload-progress').classList.add('hidden');
+                event.target.value = ''; // Reset input
+            }
+        }
+
+        // Delete Image
+        async function deleteGalleryImage(url) {
+            if (!confirm('Apakah Anda yakin ingin menghapus foto ini dari galeri?')) return;
+
+            try {
+                const response = await fetch('/api/admin/delete-image', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getAuthToken()}`
+                    },
+                    body: JSON.stringify({ url })
+                });
+
+                const result = await response.json();
+                if (!response.ok) throw new Error(result.error || 'Gagal menghapus gambar');
+
+                dbData = result.data;
+                renderGallery();
+                showToast('Foto berhasil dihapus dari galeri.', 'success');
+
+            } catch (err) {
+                console.error(err);
+                showToast(err.message || 'Gagal menghapus foto.', 'error');
+            }
+        }
+
+        function fileToBase64(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = () => {
+                    const base64Str = reader.result.split(',')[1];
+                    resolve(base64Str);
+                };
+                reader.onerror = error => reject(error);
+            });
+        }
+
+
+        // --- PRICING TAB LOGIC ---
+        function renderPricing() {
+            const container = document.getElementById('pricing-editor-container');
+            container.innerHTML = '';
+
+            const list = dbData.pricing || [];
+            list.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'glass-panel rounded-2xl p-6 space-y-4 relative group border border-white/5 hover:border-indigo-500/20 transition-all';
+                card.id = `pricing-card-${index}`;
+                
+                // Formulate HTML for features
+                const featuresHtml = (item.features || []).map((feature, fIndex) => `
+                    <div class="flex items-center space-x-2 mb-2">
+                        <input type="text" value="${feature}" class="pricing-feature flex-grow bg-white/5 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white focus:outline-none focus:ring-1 focus:ring-indigo-500">
+                        <button type="button" onclick="removeFeature(${index}, ${fIndex})" class="text-rose-400 hover:text-rose-500 p-1">
+                            &times;
+                        </button>
+                    </div>
+                `).join('');
+
+                card.innerHTML = `
+                    <button type="button" onclick="deletePricingCard('${item.id}')" class="absolute top-4 right-4 bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/20 rounded-lg p-1.5 transition opacity-0 group-hover:opacity-100">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
+                    </button>
+
+                    <input type="hidden" class="pricing-id" value="${item.id}">
+                    
+                    <div class="space-y-3">
+                        <div>
+                            <label class="block text-gray-400 text-xs mb-1">Nama Paket</label>
+                            <input type="text" class="pricing-title w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white font-semibold focus:outline-none focus:ring-1 focus:ring-indigo-500" value="${item.title}">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-gray-400 text-xs mb-1">Ukuran / Deskripsi</label>
+                                <input type="text" class="pricing-size w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-indigo-500" value="${item.size}">
+                            </div>
+                            <div>
+                                <label class="block text-gray-400 text-xs mb-1">Harga (Teks, misal: Rp. 650.000)</label>
+                                <input type="text" class="pricing-price w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-indigo-500" value="${item.price}">
+                            </div>
+                        </div>
+
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <label class="block text-gray-400 text-xs">Fitur / Keunggulan</label>
+                                <button type="button" onclick="addFeature(${index})" class="text-[10px] text-indigo-400 hover:text-indigo-300 font-semibold">+ Tambah Fitur</button>
+                            </div>
+                            <div class="pricing-features-list">
+                                ${featuresHtml}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function addNewPricingCard() {
+            if (!dbData.pricing) dbData.pricing = [];
+            dbData.pricing.push({
+                id: 'p_' + Date.now(),
+                title: 'Paket Baru',
+                size: 'Ukuran 150x200',
+                price: 'Rp. 600.000',
+                features: ['Free Custom', 'Desain elegan']
+            });
+            renderPricing();
+        }
+
+        function deletePricingCard(id) {
+            if (!confirm('Apakah Anda yakin ingin menghapus paket harga ini?')) return;
+            // Parse currently inputted UI values back to dbData first so we don't lose other edits
+            collectPricingInputs();
+            dbData.pricing = dbData.pricing.filter(item => item.id !== id);
+            renderPricing();
+        }
+
+        function addFeature(cardIndex) {
+            collectPricingInputs();
+            dbData.pricing[cardIndex].features.push('Fitur Baru');
+            renderPricing();
+        }
+
+        function removeFeature(cardIndex, featureIndex) {
+            collectPricingInputs();
+            dbData.pricing[cardIndex].features.splice(featureIndex, 1);
+            renderPricing();
+        }
+
+        // Collect all input fields from the Pricing UI and update dbData.pricing
+        function collectPricingInputs() {
+            const cards = document.querySelectorAll('#pricing-editor-container > div');
+            const updatedPricing = [];
+
+            cards.forEach(card => {
+                const id = card.querySelector('.pricing-id').value;
+                const title = card.querySelector('.pricing-title').value;
+                const size = card.querySelector('.pricing-size').value;
+                const price = card.querySelector('.pricing-price').value;
+                
+                const features = [];
+                card.querySelectorAll('.pricing-feature').forEach(input => {
+                    features.push(input.value);
+                });
+
+                updatedPricing.push({ id, title, size, price, features });
+            });
+
+            dbData.pricing = updatedPricing;
+        }
+
+        // Save Pricing to Database
+        async function savePricingData() {
+            collectPricingInputs();
+
+            try {
+                const response = await fetch('/api/admin/save-pricing', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getAuthToken()}`
+                    },
+                    body: JSON.stringify({ pricing: dbData.pricing })
+                });
+
+                const result = await response.json();
+                if (!response.ok) throw new Error(result.error || 'Gagal menyimpan harga');
+
+                dbData = result.data;
+                renderPricing();
+                showToast('Daftar harga berhasil diperbarui!', 'success');
+
+            } catch (err) {
+                console.error(err);
+                showToast(err.message || 'Gagal menyimpan data harga.', 'error');
+            }
+        }
+
+
+        // --- CONTACTS TAB LOGIC ---
+        function renderContacts() {
+            const contacts = dbData.contacts || {};
+            document.getElementById('contact-email').value = contacts.email || '';
+            document.getElementById('contact-phone').value = contacts.phone || '';
+            document.getElementById('contact-whatsapp').value = contacts.whatsapp || '';
+            document.getElementById('contact-instagram').value = contacts.instagram || '';
+            document.getElementById('contact-instagram-user').value = contacts.instagramUser || '';
+            document.getElementById('contact-address').value = contacts.address || '';
+        }
+
+        async function saveContactsData(e) {
+            e.preventDefault();
+
+            const contacts = {
+                email: document.getElementById('contact-email').value,
+                phone: document.getElementById('contact-phone').value,
+                whatsapp: document.getElementById('contact-whatsapp').value,
+                instagram: document.getElementById('contact-instagram').value,
+                instagramUser: document.getElementById('contact-instagram-user').value,
+                address: document.getElementById('contact-address').value
+            };
+
+            try {
+                const response = await fetch('/api/admin/save-contacts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getAuthToken()}`
+                    },
+                    body: JSON.stringify({ contacts })
+                });
+
+                const result = await response.json();
+                if (!response.ok) throw new Error(result.error || 'Gagal menyimpan kontak');
+
+                dbData = result.data;
+                renderContacts();
+                showToast('Informasi kontak berhasil diperbarui!', 'success');
+
+            } catch (err) {
+                console.error(err);
+                showToast(err.message || 'Gagal menyimpan data kontak.', 'error');
+            }
+        }
+
+
+        // --- TOAST NOTIFICATIONS ---
+        function showToast(message, type = 'info') {
+            const container = document.getElementById('toast-container');
+            const toast = document.createElement('div');
+            toast.className = `p-4 rounded-xl shadow-xl flex items-center space-x-3 transition-all duration-300 translate-x-12 opacity-0 max-w-sm pointer-events-auto border`;
+            
+            let bgClass = 'bg-gray-800 text-gray-200 border-gray-700';
+            let icon = 'ℹ️';
+
+            if (type === 'success') {
+                bgClass = 'bg-emerald-950/80 text-emerald-200 border-emerald-500/30';
+                icon = '✅';
+            } else if (type === 'error') {
+                bgClass = 'bg-rose-950/80 text-rose-200 border-rose-500/30';
+                icon = '❌';
+            } else if (type === 'warning') {
+                bgClass = 'bg-amber-950/80 text-amber-200 border-amber-500/30';
+                icon = '⚠️';
+            }
+
+            toast.className += ` ${bgClass}`;
+            toast.innerHTML = `
+                <span class="text-base">${icon}</span>
+                <span class="text-sm font-medium flex-grow">${message}</span>
+            `;
+
+            container.appendChild(toast);
+            
+            // Trigger animation
+            setTimeout(() => {
+                toast.classList.remove('translate-x-12', 'opacity-0');
+            }, 10);
+
+            // Remove toast after 4s
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-2');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+    </script>
+</body>
+</html>
