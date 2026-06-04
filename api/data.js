@@ -15,6 +15,7 @@ const defaultData = {
       title: "Papan Bunga J2",
       size: "Ukuran 125x200",
       price: "Rp. 550.000",
+      image: "img/img1.jpeg",
       features: [
         "Free Custom",
         "Cocok untuk segala moment",
@@ -27,6 +28,7 @@ const defaultData = {
       title: "Papan Bunga Standart",
       size: "Ukuran 150x200",
       price: "Rp. 600.000",
+      image: "img/img2.jpeg",
       features: [
         "Free Custom",
         "Cocok untuk segala moment",
@@ -39,6 +41,7 @@ const defaultData = {
       title: "Papan Bunga 4 Titik",
       size: "Ukuran 125x200",
       price: "Rp. 700.000",
+      image: "img/img3.jpeg",
       features: [
         "Free Custom",
         "Cocok untuk segala moment",
@@ -51,6 +54,7 @@ const defaultData = {
       title: "Papan Bunga J3",
       size: "Ukuran 150x200",
       price: "Rp. 750.000",
+      image: "img/img4.jpeg",
       features: [
         "Free Custom",
         "Cocok untuk segala moment",
@@ -63,6 +67,7 @@ const defaultData = {
       title: "Bunga Meja",
       size: "",
       price: "Rp. 750.000",
+      image: "img/img5.jpeg",
       features: [
         "Free Custom",
         "Cocok untuk segala moment",
@@ -75,6 +80,7 @@ const defaultData = {
       title: "Standing Flower",
       size: "Bunga Atas",
       price: "Rp. 850.000",
+      image: "img/img6.jpeg",
       features: [
         "Free Custom",
         "Cocok untuk segala moment",
@@ -87,6 +93,7 @@ const defaultData = {
       title: "Standing Flower",
       size: "Bunga Atas dan Bawah",
       price: "Rp. 1.000.000",
+      image: "img/img7.jpeg",
       features: [
         "Free Custom",
         "Cocok untuk segala moment",
@@ -99,6 +106,7 @@ const defaultData = {
       title: "Papan Bunga Besar 4 Titik (kuping Lebar)",
       size: "Ukuran 150x200",
       price: "Rp. 1.200.000",
+      image: "img/img8.jpeg",
       features: [
         "Kuping Lebar",
         "Free Custom",
@@ -112,6 +120,7 @@ const defaultData = {
       title: "Papan Bunga Sambung",
       size: "Ukuran 125x400",
       price: "Rp. 1.300.000",
+      image: "img/img9.jpeg",
       features: [
         "Papan Bunga Sambung",
         "Free Custom",
@@ -125,6 +134,7 @@ const defaultData = {
       title: "Papan Bunga Sambung",
       size: "Ukuran 150x400",
       price: "Rp. 1.500.000",
+      image: "img/img10.jpeg",
       features: [
         "Papan Bunga Sambung",
         "Free Custom",
@@ -138,6 +148,7 @@ const defaultData = {
       title: "Papan Bunga Besar 6 Titik",
       size: "Ukuran 150x200",
       price: "Rp. 1.500.000",
+      image: "img/img11.jpeg",
       features: [
         "Free Custom",
         "Cocok untuk segala moment",

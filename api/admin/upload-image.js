@@ -12,7 +12,7 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { filename, contentType, base64, alt } = req.body;
+    const { filename, contentType, base64, alt, addToGallery = true } = req.body;
     if (!filename || !base64) {
       return res.status(400).json({ error: 'Missing filename or base64 data.' });
     }
@@ -32,18 +32,20 @@ export default async function handler(req, res) {
     if (!data) {
       data = { gallery: [], pricing: [], contacts: {} };
     }
-    if (!data.gallery || !Array.isArray(data.gallery)) {
-      data.gallery = [];
-    }
 
-    // Add to gallery list
+    // Add to gallery list if addToGallery is true
     const newImage = {
       url: blob.url,
       alt: alt || 'Papan bunga Rizz Florist'
     };
-    data.gallery.push(newImage);
 
-    await kv.set('rizz_florist_data', data);
+    if (addToGallery) {
+      if (!data.gallery || !Array.isArray(data.gallery)) {
+        data.gallery = [];
+      }
+      data.gallery.push(newImage);
+      await kv.set('rizz_florist_data', data);
+    }
 
     return res.status(200).json({ message: 'Image uploaded successfully.', image: newImage, data });
   } catch (error) {

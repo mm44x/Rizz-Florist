@@ -519,6 +519,11 @@
                     </div>
                 `).join('');
 
+                const imageUrl = item.image || '';
+                const imagePreviewHtml = imageUrl 
+                    ? `<img src="${imageUrl}" alt="${item.title}" class="w-full h-32 object-cover rounded-xl border border-white/10 mb-2" id="pricing-preview-${index}">`
+                    : `<div class="w-full h-32 flex items-center justify-center rounded-xl bg-white/5 border border-dashed border-white/10 text-gray-500 text-xs mb-2" id="pricing-preview-empty-${index}">Belum ada gambar</div>`;
+
                 card.innerHTML = `
                     <button type="button" onclick="deletePricingCard('${item.id}')" class="absolute top-4 right-4 bg-rose-500/10 hover:bg-rose-500/20 text-rose-300 border border-rose-500/20 rounded-lg p-1.5 transition opacity-0 group-hover:opacity-100">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path></svg>
@@ -527,24 +532,41 @@
                     <input type="hidden" class="pricing-id" value="${item.id}">
                     
                     <div class="space-y-3">
-                        <div>
-                            <label class="block text-gray-400 text-xs mb-1">Nama Paket</label>
-                            <input type="text" class="pricing-title w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white font-semibold focus:outline-none focus:ring-1 focus:ring-indigo-500" value="${item.title}">
+                        <div class="flex gap-4 items-start">
+                            <div class="w-1/3 flex-shrink-0">
+                                <div id="pricing-image-container-${index}">
+                                    ${imagePreviewHtml}
+                                </div>
+                                <label class="cursor-pointer block text-center bg-white/5 hover:bg-white/10 text-[10px] text-gray-300 py-1.5 px-2 rounded-lg border border-white/10 transition mt-2">
+                                    <span>📸 Upload Foto</span>
+                                    <input type="file" id="pricing-file-input-${index}" accept="image/*" class="hidden" onchange="handlePricingImageUpload(event, ${index})">
+                                </label>
+                            </div>
+                            <div class="flex-grow space-y-3">
+                                <div>
+                                    <label class="block text-gray-400 text-[10px] mb-1">Nama Paket</label>
+                                    <input type="text" class="pricing-title w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white font-semibold focus:outline-none focus:ring-1 focus:ring-indigo-500" value="${item.title}">
+                                </div>
+                                <div>
+                                    <label class="block text-gray-400 text-[10px] mb-1">URL Gambar Produk</label>
+                                    <input type="text" id="pricing-image-url-${index}" class="pricing-image w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-xs text-gray-300 focus:outline-none focus:ring-1 focus:ring-indigo-500" value="${imageUrl}" oninput="updatePricingPreview(this.value, ${index})">
+                                </div>
+                            </div>
                         </div>
                         <div class="grid grid-cols-2 gap-4">
                             <div>
-                                <label class="block text-gray-400 text-xs mb-1">Ukuran / Deskripsi</label>
+                                <label class="block text-gray-400 text-[10px] mb-1">Ukuran / Deskripsi</label>
                                 <input type="text" class="pricing-size w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-indigo-500" value="${item.size}">
                             </div>
                             <div>
-                                <label class="block text-gray-400 text-xs mb-1">Harga (Teks, misal: Rp. 650.000)</label>
+                                <label class="block text-gray-400 text-[10px] mb-1">Harga (Teks, misal: Rp. 650.000)</label>
                                 <input type="text" class="pricing-price w-full bg-white/5 border border-white/10 rounded-xl px-3 py-2 text-sm text-white focus:outline-none focus:ring-1 focus:ring-indigo-500" value="${item.price}">
                             </div>
                         </div>
 
                         <div>
                             <div class="flex justify-between items-center mb-1">
-                                <label class="block text-gray-400 text-xs">Fitur / Keunggulan</label>
+                                <label class="block text-gray-400 text-[10px]">Fitur / Keunggulan</label>
                                 <button type="button" onclick="addFeature(${index})" class="text-[10px] text-indigo-400 hover:text-indigo-300 font-semibold">+ Tambah Fitur</button>
                             </div>
                             <div class="pricing-features-list">
@@ -557,6 +579,67 @@
             });
         }
 
+        function updatePricingPreview(value, index) {
+            const container = document.getElementById(`pricing-image-container-${index}`);
+            if (!container) return;
+            if (value) {
+                container.innerHTML = `<img src="${value}" alt="Preview" class="w-full h-32 object-cover rounded-xl border border-white/10 mb-2" id="pricing-preview-${index}">`;
+            } else {
+                container.innerHTML = `<div class="w-full h-32 flex items-center justify-center rounded-xl bg-white/5 border border-dashed border-white/10 text-gray-500 text-xs mb-2" id="pricing-preview-empty-${index}">Belum ada gambar</div>`;
+            }
+        }
+
+        async function handlePricingImageUpload(event, index) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            if (file.size > 4 * 1024 * 1024) {
+                showToast('Ukuran file maksimal adalah 4MB!', 'error');
+                return;
+            }
+
+            const container = document.getElementById(`pricing-image-container-${index}`);
+            const originalContent = container.innerHTML;
+            container.innerHTML = `
+                <div class="w-full h-32 flex flex-col items-center justify-center rounded-xl bg-white/5 border border-indigo-500/20 text-indigo-300 text-[10px] mb-2 animate-pulse">
+                    <div class="animate-spin rounded-full h-5 w-5 border-t-2 border-b-2 border-indigo-400 mb-2"></div>
+                    <span>Uploading...</span>
+                </div>
+            `;
+
+            try {
+                const base64Str = await fileToBase64(file);
+                const response = await fetch('/api/admin/upload-image', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${getAuthToken()}`
+                    },
+                    body: JSON.stringify({
+                        filename: file.name,
+                        contentType: file.type,
+                        base64: base64Str,
+                        alt: file.name.split('.')[0],
+                        addToGallery: false
+                    })
+                });
+
+                const result = await response.json();
+                if (!response.ok) throw new Error(result.error || 'Gagal upload foto');
+
+                const newUrl = result.image.url;
+                document.getElementById(`pricing-image-url-${index}`).value = newUrl;
+                updatePricingPreview(newUrl, index);
+                showToast('Foto produk berhasil diunggah!', 'success');
+            } catch (err) {
+                console.error(err);
+                container.innerHTML = originalContent;
+                showToast(err.message || 'Gagal mengunggah foto produk.', 'error');
+            } finally {
+                event.target.value = '';
+            }
+        }
+
         function addNewPricingCard() {
             if (!dbData.pricing) dbData.pricing = [];
             dbData.pricing.push({
@@ -564,6 +647,7 @@
                 title: 'Paket Baru',
                 size: 'Ukuran 150x200',
                 price: 'Rp. 600.000',
+                image: '',
                 features: ['Free Custom', 'Desain elegan']
             });
             renderPricing();
@@ -571,7 +655,6 @@
 
         function deletePricingCard(id) {
             if (!confirm('Apakah Anda yakin ingin menghapus paket harga ini?')) return;
-            // Parse currently inputted UI values back to dbData first so we don't lose other edits
             collectPricingInputs();
             dbData.pricing = dbData.pricing.filter(item => item.id !== id);
             renderPricing();
@@ -589,7 +672,6 @@
             renderPricing();
         }
 
-        // Collect all input fields from the Pricing UI and update dbData.pricing
         function collectPricingInputs() {
             const cards = document.querySelectorAll('#pricing-editor-container > div');
             const updatedPricing = [];
@@ -599,19 +681,19 @@
                 const title = card.querySelector('.pricing-title').value;
                 const size = card.querySelector('.pricing-size').value;
                 const price = card.querySelector('.pricing-price').value;
+                const image = card.querySelector('.pricing-image').value;
                 
                 const features = [];
                 card.querySelectorAll('.pricing-feature').forEach(input => {
                     features.push(input.value);
                 });
 
-                updatedPricing.push({ id, title, size, price, features });
+                updatedPricing.push({ id, title, size, price, image, features });
             });
 
             dbData.pricing = updatedPricing;
         }
 
-        // Save Pricing to Database
         async function savePricingData() {
             collectPricingInputs();
 
@@ -637,7 +719,6 @@
                 showToast(err.message || 'Gagal menyimpan data harga.', 'error');
             }
         }
-
 
         // --- CONTACTS TAB LOGIC ---
         function renderContacts() {

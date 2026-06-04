@@ -28,6 +28,7 @@ export default async function handler(req, res) {
       title: item.title || "",
       size: item.size || "",
       price: item.price || "",
+      image: item.image || "",
       features: Array.isArray(item.features) ? item.features : []
     }));
 
