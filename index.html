@@ -1,1262 +1,712 @@
 <!DOCTYPE html>
-<html lang="id">
-
+<html lang="id" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="Rizz Florist menyediakan papan bunga ucapan berkualitas untuk pernikahan, duka cita, peresmian, dan acara lainnya. Pesan cepat via WhatsApp.">
+    <meta name="description" content="Rizz Florist menyediakan papan bunga ucapan berkualitas untuk pernikahan, duka cita, peresmian, dan acara lainnya. Pesan cepat via WhatsApp.">
     <meta name="robots" content="index, follow">
     <meta name="author" content="Rizz Florist">
-    <!-- Canonical URL: ganti dengan URL produksi situs Anda -->
     <link rel="canonical" href="https://rizz-florist.vercel.app/">
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:title" content="Rizz Florist - Papan Bunga Berkualitas">
-    <meta property="og:description"
-        content="Pesan papan bunga ucapan berkualitas untuk berbagai acara. Layanan cepat, hasil elegan.">
+    <meta property="og:title" content="Rizz Florist — Papan Bunga Premium Jakarta">
+    <meta property="og:description" content="Pesan papan bunga ucapan berkualitas untuk berbagai acara. Layanan cepat, hasil elegan.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://rizz-florist.vercel.app/">
     <meta property="og:image" content="img/img1.jpeg">
     <meta property="og:site_name" content="Rizz Florist">
     <meta property="og:locale" content="id_ID">
-
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Rizz Florist - Papan Bunga Berkualitas">
-    <meta name="twitter:description"
-        content="Papan bunga ucapan premium untuk semua momen spesial. Hubungi kami sekarang!">
+    <meta name="twitter:title" content="Rizz Florist — Papan Bunga Premium Jakarta">
+    <meta name="twitter:description" content="Papan bunga ucapan premium untuk semua momen spesial. Hubungi kami sekarang!">
     <meta name="twitter:image" content="img/img1.jpeg">
-    <title>Rizz Florist - Papan Bunga Berkualitas</title>
+    <meta name="theme-color" content="#FDF8F3">
+    <title>Rizz Florist — Papan Bunga Premium Jakarta</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
-            scroll-behavior: smooth;
+        :root {
+            --cream: #FDF8F3;
+            --cream-warm: #F7EDE4;
+            --brown-deepest: #2C1810;
+            --brown-dark: #4A2C20;
+            --brown: #6B3A2A;
+            --caramel: #B8864E;
+            --gold: #C4965E;
+            --rose: #D4A08A;
+            --rose-light: #E8C8B8;
+            --border-subtle: #E0D0C4;
+            --border-warm: #D4C0B0;
+            --text-primary: #2C1810;
+            --text-secondary: #5C3D2E;
+            --text-muted: #8C6E5E;
+            --white: #FFFFFF;
+            --surface: rgba(255,255,255,0.7);
         }
 
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
+        * { scroll-behavior: smooth; margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--text-primary); -webkit-font-smoothing: antialiased; }
+        h1, h2, h3, h4, .ff-serif { font-family: 'Playfair Display', Georgia, serif; }
+        img { display: block; max-width: 100%; }
 
-        /* Header dengan glassmorphism effect */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        @media (prefers-reduced-motion: reduce) {
+            *, ::before, ::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
         }
+        :focus-visible { outline: 2.5px solid var(--brown); outline-offset: 3px; border-radius: 4px; }
 
-        /* Hero section dengan gradient dan animasi */
-        .hero-section {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+        /* ───── HEADER ───── */
+        #site-header {
+            position: sticky; top: 0; z-index: 50;
+            background: rgba(253, 248, 243, 0.88);
+            backdrop-filter: blur(18px) saturate(140%);
+            -webkit-backdrop-filter: blur(18px) saturate(140%);
+            border-bottom: 1px solid var(--border-subtle);
+        }
+        .nav-link { position: relative; color: var(--text-secondary); font-weight: 500; font-size: 0.9rem; transition: color 0.25s; }
+        .nav-link:hover { color: var(--brown-dark); }
+        .nav-link::after { content: ''; position: absolute; bottom: -6px; left: 50%; transform: translateX(-50%); width: 0; height: 2px; background: var(--caramel); border-radius: 2px; transition: width 0.3s cubic-bezier(0.4,0,0.2,1); }
+        .nav-link:hover::after { width: 70%; }
+
+        /* ───── HERO ───── */
+        #hero {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 85vh;
+            align-items: center;
+            gap: 0;
             position: relative;
             overflow: hidden;
+            background: linear-gradient(160deg, #FDF8F3 0%, #F5E8DC 35%, #F0DFCF 65%, #ECD5C0 100%);
         }
-
-        .hero-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(1px);
+        #hero::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 70% 60% at 70% 40%, rgba(212, 160, 138, 0.15) 0%, transparent 60%),
+                        radial-gradient(ellipse 50% 50% at 25% 70%, rgba(196, 150, 94, 0.10) 0%, transparent 60%);
+            pointer-events: none;
         }
-
-        .hero-content {
-            position: relative;
-            z-index: 1;
+        .hero-left {
+            padding: 2rem 2rem 2rem 5vw;
+            position: relative; z-index: 2;
         }
-
-        @keyframes gradientShift {
-            0% {
-                background-position: 0% 50%;
-            }
-
-            50% {
-                background-position: 100% 50%;
-            }
-
-            100% {
-                background-position: 0% 50%;
-            }
+        .hero-eyebrow {
+            display: inline-flex; align-items: center; gap: 10px;
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.2em; color: var(--caramel);
+            margin-bottom: 1.5rem;
         }
-
-        /* Animasi fade in untuk elemen */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .hero-eyebrow::before { content: ''; width: 32px; height: 1.5px; background: var(--caramel); border-radius: 1px; }
+        .hero-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2.75rem, 5.5vw, 4.25rem);
+            font-weight: 700; line-height: 1.08; color: var(--brown-deepest);
+            margin-bottom: 1.25rem;
+            text-wrap: balance;
         }
-
-        .fade-in-up {
-            animation: fadeInUp 0.8s ease-out forwards;
+        .hero-title em { font-style: italic; color: var(--caramel); }
+        .hero-desc {
+            font-size: 1.1rem; line-height: 1.7; color: var(--text-secondary);
+            max-width: 480px; margin-bottom: 2rem;
         }
-
-        /* Gallery item dengan efek lebih menarik */
-        .gallery-item {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border-radius: 12px;
-            overflow: hidden;
-            position: relative;
-            cursor: pointer;
-            aspect-ratio: 1;
-        }
-
-        .gallery-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(135deg, rgba(102, 126, 234, 0.3) 0%, rgba(118, 75, 162, 0.3) 100%);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: 1;
-        }
-
-        .gallery-item:hover::before {
-            opacity: 1;
-        }
-
-        .gallery-item img {
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .gallery-item:hover {
-            transform: translateY(-10px) scale(1.03);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-
-        /* Pricing cards dengan design lebih menarik */
-        .pricing-card {
-            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 2px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .pricing-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
-            transform: scaleX(0);
-            transition: transform 0.4s ease;
-        }
-
-        .pricing-card:hover::before {
-            transform: scaleX(1);
-        }
-
-        .pricing-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.2);
-            border-color: #667eea;
-        }
-
-        /* Button dengan efek glassmorphism */
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+        .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; margin-bottom: 2.5rem; }
+        .btn-solid {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: var(--brown);
+            color: white; font-weight: 600; font-size: 0.95rem;
+            padding: 0.9rem 2rem; border-radius: 0.75rem;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 20px rgba(107, 58, 42, 0.25);
+            cursor: pointer; border: none; text-decoration: none;
+        }
+        .btn-solid:hover { background: var(--brown-dark); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(107, 58, 42, 0.35); }
+        .btn-solid:active { transform: translateY(0); }
+        .btn-outlined {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            background: transparent; border: 1.5px solid var(--brown);
+            color: var(--brown); font-weight: 600; font-size: 0.95rem;
+            padding: 0.9rem 2rem; border-radius: 0.75rem;
+            transition: all 0.3s ease; cursor: pointer; text-decoration: none;
+        }
+        .btn-outlined:hover { background: var(--brown); color: white; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(107, 58, 42, 0.18); }
+        .hero-social-proof { display: flex; gap: 2rem; align-items: center; flex-wrap: wrap; }
+        .proof-item { display: flex; align-items: center; gap: 0.5rem; font-size: 0.85rem; color: var(--text-muted); }
+        .proof-item strong { color: var(--text-primary); font-size: 1.2rem; }
+        .hero-right {
+            position: relative; z-index: 2;
+            display: flex; align-items: center; justify-content: center;
+            height: 100%; padding: 2rem 5vw 2rem 2rem;
+        }
+        .hero-image-cluster {
+            position: relative; width: 100%; max-width: 500px;
+        }
+        .hero-img-main {
+            width: 100%; aspect-ratio: 4/5; object-fit: cover;
+            border-radius: 1.5rem; border: 6px solid rgba(255,255,255,0.7);
+            box-shadow: 0 25px 60px rgba(44, 24, 16, 0.15);
+        }
+        .hero-img-float {
+            position: absolute; width: 42%;
+            aspect-ratio: 1; object-fit: cover;
+            border-radius: 1rem; border: 4px solid white;
+            box-shadow: 0 15px 40px rgba(44, 24, 16, 0.18);
+        }
+        .hero-img-float:nth-child(2) { bottom: -8%; right: -10%; }
+        .hero-img-float:nth-child(3) { top: -6%; right: -6%; width: 35%; }
+
+        /* ───── SECTION HEADINGS ───── */
+        .section-label {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            font-size: 0.75rem; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.18em; color: var(--caramel);
+            margin-bottom: 0.75rem;
+        }
+        .section-label::before { content: ''; width: 24px; height: 1.5px; background: var(--caramel); }
+        .section-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: clamp(2rem, 4vw, 3.25rem);
+            font-weight: 700; line-height: 1.12; color: var(--brown-deepest);
+            margin-bottom: 0.75rem; text-wrap: balance;
+        }
+
+        /* ───── GALLERY BENTO ───── */
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 220px;
+            gap: 1rem;
+        }
+        .bento-item {
+            position: relative; border-radius: 1rem; overflow: hidden;
+            cursor: pointer; background: var(--cream-warm);
+            border: 1px solid var(--border-subtle);
+            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
+        }
+        .bento-item img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s cubic-bezier(0.16,1,0.3,1); }
+        .bento-item:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(44, 24, 16, 0.12); border-color: var(--caramel); }
+        .bento-item:hover img { transform: scale(1.06); }
+        .bento-item::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(180deg, transparent 55%, rgba(44,24,16,0.5) 100%);
+            opacity: 0; transition: opacity 0.4s ease; z-index: 1;
+        }
+        .bento-item:hover::after { opacity: 1; }
+        .bento-tall { grid-row: span 2; }
+        .bento-wide { grid-column: span 2; }
+
+        /* ───── WHY US CARDS ───── */
+        .why-card {
+            background: white; border: 1px solid var(--border-subtle);
+            border-radius: 1.25rem; padding: 2rem;
+            transition: all 0.35s ease;
+        }
+        .why-card:hover { border-color: var(--caramel); box-shadow: 0 12px 32px rgba(44,24,16,0.06); transform: translateY(-4px); }
+        .why-icon {
+            width: 52px; height: 52px; border-radius: 0.875rem;
+            background: var(--cream-warm); display: flex; align-items: center; justify-content: center;
+            margin-bottom: 1.25rem; color: var(--brown);
+        }
+
+        /* ───── PRICING CARDS ───── */
+        .price-card {
+            background: white; border: 1px solid var(--border-subtle);
+            border-radius: 1.25rem; overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.16,1,0.3,1);
             position: relative;
-            overflow: hidden;
         }
-
-        .btn-primary::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+        .price-card:hover { transform: translateY(-6px); box-shadow: 0 20px 40px rgba(44,24,16,0.10); border-color: var(--caramel); }
+        .price-card.featured { border-color: var(--caramel); border-width: 2px; }
+        .price-card .badge {
+            position: absolute; top: 1rem; right: 1rem;
+            background: var(--brown); color: white; font-size: 0.7rem; font-weight: 600;
+            padding: 0.3rem 0.8rem; border-radius: 2rem; letter-spacing: 0.05em; z-index: 2;
         }
-
-        .btn-primary:hover::before {
-            width: 300px;
-            height: 300px;
+        .price-img { width: 100%; height: 220px; object-fit: cover; }
+        .price-body { padding: 1.5rem; }
+        .price-name { font-family: 'Playfair Display', Georgia, serif; font-size: 1.3rem; font-weight: 600; color: var(--brown-deepest); }
+        .price-amount {
+            font-family: 'Playfair Display', Georgia, serif;
+            font-size: 2.25rem; font-weight: 700;
+            background: linear-gradient(135deg, var(--brown) 0%, var(--caramel) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
         }
+        .price-feature { display: flex; align-items: center; gap: 0.625rem; font-size: 0.85rem; color: var(--text-secondary); padding: 0.3rem 0; }
 
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+        /* ───── CTA BANNER ───── */
+        .cta-banner {
+            background: linear-gradient(160deg, var(--brown-dark) 0%, var(--brown) 40%, #3D1E14 100%);
+            position: relative; overflow: hidden;
         }
-
-        .btn-primary span {
-            position: relative;
-            z-index: 1;
-        }
-
-        /* Modal dengan animasi lebih smooth */
-        #modal {
-            transition: opacity 0.3s ease-in-out, visibility 0.3s ease-in-out;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-        }
-
-        /* WhatsApp button dengan animasi pulse */
-        .whatsapp-btn {
-            animation: pulse 2s infinite;
-            box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-        }
-
-        @keyframes pulse {
-
-            0%,
-            100% {
-                box-shadow: 0 10px 30px rgba(37, 211, 102, 0.4);
-            }
-
-            50% {
-                box-shadow: 0 10px 40px rgba(37, 211, 102, 0.6);
-            }
-        }
-
-        /* Section dengan pattern background */
-        .section-pattern {
-            position: relative;
-        }
-
-        .section-pattern::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-image:
-                radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.05) 0%, transparent 50%);
+        .cta-banner::before {
+            content: ''; position: absolute; inset: 0;
+            background: radial-gradient(ellipse 60% 50% at 80% 30%, rgba(212, 160, 138, 0.15) 0%, transparent 70%),
+                        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Ccircle cx='30' cy='30' r='1.5' fill='%23ffffff' fill-opacity='0.04'/%3E%3C/svg%3E");
             pointer-events: none;
         }
 
-        /* Footer dengan gradient */
-        footer {
-            background: linear-gradient(135deg, #1e3a8a 0%, #312e81 100%);
-            position: relative;
-            overflow: hidden;
+        /* ───── FOOTER ───── */
+        #site-footer {
+            background: #1F110A;
+            color: rgba(255,255,255,0.6);
+            font-size: 0.875rem;
         }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
-            opacity: 0.3;
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 3rem;
         }
-
-        footer>* {
-            position: relative;
-            z-index: 1;
+        .footer-title {
+            font-family: 'Playfair Display', Georgia, serif;
+            color: white; font-size: 1.35rem; font-weight: 600; margin-bottom: 1rem;
         }
-
-        /* Navbar links dengan efek underline */
-        nav a {
-            position: relative;
+        .footer-link {
+            color: rgba(255,255,255,0.55);
+            transition: color 0.2s; text-decoration: none;
         }
+        .footer-link:hover { color: var(--rose-light); }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
-            transition: width 0.3s ease;
+        /* ───── LIGHTBOX ───── */
+        #lightbox-modal {
+            position: fixed; inset: 0; z-index: 100; display: flex; align-items: center; justify-content: center;
+            background: rgba(20, 8, 4, 0.94); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            transition: opacity 0.3s ease, visibility 0.3s ease; padding: 2rem;
         }
-
-        nav a:hover::after {
-            width: 100%;
+        #lightbox-modal.hidden { visibility: hidden; opacity: 0; }
+        .lightbox-img { max-width: 90vw; max-height: 85vh; object-fit: contain; border-radius: 0.75rem; }
+        .lightbox-btn {
+            position: absolute; background: rgba(255,255,255,0.08); backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1); color: white;
+            width: 48px; height: 48px; border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; cursor: pointer; transition: all 0.25s; user-select: none;
         }
+        .lightbox-btn:hover { background: rgba(255,255,255,0.16); }
+        .lightbox-close { top: 1.5rem; right: 1.5rem; }
+        .lightbox-prev { left: 1.5rem; top: 50%; transform: translateY(-50%); }
+        .lightbox-next { right: 1.5rem; top: 50%; transform: translateY(-50%); }
 
-        /* Load more button */
-        #load-more-btn {
-            position: relative;
-            overflow: hidden;
+        /* ───── FLOATING WA ───── */
+        .wa-fab {
+            position: fixed; bottom: 2rem; right: 2rem; z-index: 90;
+            background: var(--brown); color: white;
+            padding: 0.875rem 1.5rem; border-radius: 3rem;
+            display: inline-flex; align-items: center; gap: 0.625rem;
+            font-weight: 600; font-size: 0.9rem; box-shadow: 0 10px 35px rgba(107, 58, 42, 0.35);
+            transition: all 0.3s ease; text-decoration: none;
+            animation: waPulse 2.5s infinite;
         }
-
-        #load-more-btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
+        @keyframes waPulse {
+            0%,100% { box-shadow: 0 10px 35px rgba(107,58,42,0.35); }
+            50% { box-shadow: 0 10px 45px rgba(107,58,42,0.55); }
         }
+        .wa-fab:hover { transform: translateY(-3px); background: var(--brown-dark); }
 
-        #load-more-btn:hover::before {
-            width: 300px;
-            height: 300px;
+        /* ───── RESPONSIVE ───── */
+        @media (max-width: 1024px) {
+            #hero { grid-template-columns: 1fr; min-height: auto; padding-top: 2rem; }
+            .hero-right { order: -1; padding: 0 2rem 0.5rem; max-height: 320px; }
+            .hero-image-cluster { max-width: 280px; }
+            .hero-left { padding: 1.5rem 2rem 3rem; text-align: center; }
+            .hero-desc { max-width: 100%; }
+            .hero-ctas { justify-content: center; }
+            .hero-social-proof { justify-content: center; }
+            .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 180px; }
+            .bento-wide { grid-column: span 2; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
         }
-
-        #load-more-btn span {
-            position: relative;
-            z-index: 1;
+        @media (max-width: 640px) {
+            #hero { padding-top: 1.5rem; }
+            .hero-right { padding: 0 1rem 0; max-height: 230px; }
+            .hero-image-cluster { max-width: 200px; }
+            .hero-img-main { border-width: 4px; }
+            .hero-img-float:nth-child(2) { bottom: -5%; right: -6%; }
+            .hero-img-float:nth-child(3) { top: -3%; right: -3%; width: 30%; }
+            .hero-left { padding: 1.5rem 1.25rem 2.5rem; }
+            .hero-title { font-size: 1.85rem; }
+            .hero-desc { font-size: 0.9rem; }
+            .hero-eyebrow { font-size: 0.7rem; }
+            .hero-ctas { flex-direction: column; align-items: center; }
+            .btn-solid, .btn-outlined { width: 100%; justify-content: center; padding: 0.75rem 1.25rem; font-size: 0.85rem; }
+            .hero-social-proof { gap: 1rem; }
+            .proof-item { font-size: 0.75rem; }
+            .bento-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; gap: 0.5rem; }
+            .bento-wide { grid-column: span 2; }
+            .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+            .section-title { font-size: 1.75rem; }
+            .cta-banner { padding: 3rem 1rem; }
+            .cta-banner h2 { font-size: 1.75rem; }
+            nav ul { gap: 1rem; font-size: 0.8rem; }
         }
     </style>
-
-    <!-- Structured Data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "WebSite",
-      "name": "Rizz Florist",
-      "url": "",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": "",
-        "query-input": "required name=search_term_string"
-      }
-    }
-    </script>
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Florist",
-      "name": "Rizz Florist",
-      "email": "mailto:rizzflorist12@gmail.com",
-      "telephone": "+62-823-2213-0101",
-      "image": "img/img1.jpeg",
-      "sameAs": [
-        "https://www.instagram.com/rizz_florist.id"
-      ]
-    }
+    {"@context":"https://schema.org","@type":"Florist","name":"Rizz Florist","email":"mailto:rizzflorist12@gmail.com","telephone":"+62-823-2213-0101","image":"img/img1.jpeg","sameAs":["https://www.instagram.com/rizz_florist.id"]}
     </script>
 </head>
+<body>
 
-<body class="bg-gradient-to-br from-sky-50 via-purple-50 to-pink-50 text-gray-800">
-
-    <!-- Header -->
-    <header class="sticky top-0 z-40">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <h1
-                class="text-3xl font-bold bg-gradient-to-r from-sky-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                🌸 Rizz Florist</h1>
+    <!-- ═══════════ HEADER ═══════════ -->
+    <header id="site-header">
+        <div class="mx-auto max-w-7xl px-4 sm:px-6 py-3.5 flex items-center justify-between">
+            <a href="#" class="flex items-center gap-2.5 group" aria-label="Rizz Florist — Beranda">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none" stroke="var(--brown)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 2c-2 0-4 1-5 4-3 6-8 10-8 14 0 4 5 8 13 8s13-4 13-8c0-4-5-8-8-14-1-3-3-4-5-4z"/><circle cx="16" cy="20" r="4"/><path d="M16 24v6"/></svg>
+                <span class="text-xl font-bold ff-serif" style="background:linear-gradient(135deg,var(--brown) 0%,var(--caramel) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;">Rizz Florist</span>
+            </a>
             <nav aria-label="Navigasi utama">
-                <ul class="flex space-x-8">
-                    <li><a href="#" class="text-gray-700 hover:text-purple-600 transition font-medium">Home</a></li>
-                    <li><a href="#galeri" class="text-gray-700 hover:text-purple-600 transition font-medium">Galeri</a>
-                    </li>
-                    <li><a href="#pricing"
-                            class="text-gray-700 hover:text-purple-600 transition font-medium">Pricing</a></li>
-                    <li><a href="#kontak" class="text-gray-700 hover:text-purple-600 transition font-medium">Kontak</a>
-                    </li>
+                <ul class="flex items-center gap-6 sm:gap-8" style="list-style:none;">
+                    <li><a href="#" class="nav-link">Beranda</a></li>
+                    <li><a href="#galeri" class="nav-link">Galeri</a></li>
+                    <li><a href="#pricing" class="nav-link">Harga</a></li>
+                    <li><a href="#kontak" class="nav-link">Kontak</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <!-- Main Content -->
     <main>
-        <!-- Hero Section -->
-        <section class="hero-section text-white py-24 px-6">
-            <div class="hero-content container mx-auto max-w-4xl text-center fade-in-up">
-                <h2 class="text-5xl md:text-6xl font-extrabold mb-4 tracking-tight drop-shadow-lg">Selamat Datang di
-                    Rizz Florist</h2>
-                <h2 class="text-4xl md:text-5xl font-bold mb-6 tracking-tight drop-shadow-lg">Pusat Karangan Bunga
-                    Jabodetabek</h2>
-                <p class="mt-6 max-w-2xl mx-auto text-lg md:text-xl text-white/90 leading-relaxed">
-                    Kami menyediakan papan bunga ucapan berkualitas untuk berbagai acara, mulai dari pernikahan, duka
-                    cita, hingga peresmian usaha. Setiap rangkaian dibuat dengan sentuhan personal dan material terbaik.
-                </p>
-                <div
-                    class="mt-10 flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4">
-                    <a href="#galeri"
-                        class="btn-primary inline-block text-white font-bold py-4 px-10 rounded-xl w-full sm:w-auto">
-                        <span>Lihat Karya Kami</span>
+        <!-- ═══════════ HERO ═══════════ -->
+        <section id="hero">
+            <div class="hero-left">
+                <span class="hero-eyebrow">Premium Florist · Jabodetabek</span>
+                <h1 class="hero-title">Rangkaian Bunga <em>Elegan</em> untuk Setiap Momen</h1>
+                <p class="hero-desc">Dari papan bunga pernikahan hingga ucapan duka cita — kami hadirkan karangan bunga berkualitas tinggi dengan sentuhan personal dan pengiriman tepat waktu.</p>
+                <div class="hero-ctas">
+                    <a href="#galeri" class="btn-solid">
+                        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L5 21"/></svg>
+                        Lihat Koleksi
                     </a>
-                    <a href="https://wa.me/6282322130101" target="_blank" rel="noopener noreferrer"
-                        aria-label="Pesan via WhatsApp Rizz Florist"
-                        class="inline-flex items-center justify-center bg-green-500 text-white font-bold py-4 px-10 rounded-xl hover:bg-green-600 transition-all shadow-lg hover:shadow-xl hover:scale-105 w-full sm:w-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" viewBox="0 0 24 24"
-                            fill="currentColor">
-                            <path
-                                d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.61 15.36 3.5 16.86L2.45 20.55L6.3 19.54C7.75 20.38 9.34 20.86 11.04 20.86H12.04C17.5 20.86 21.95 16.41 21.95 10.95C21.95 5.49 17.5 1 12.04 1ZM12.04 20.86C10.44 20.86 8.89 20.41 7.54 19.57L7.27 19.42L3.82 20.33L4.75 17.03L4.58 16.75C3.65 15.33 3.13 13.68 3.13 11.96C3.13 6.99 7.11 3 12.04 3C14.46 3 16.63 3.95 18.27 5.59C19.91 7.23 20.86 9.4 20.86 11.82C20.86 16.79 16.88 20.86 12.04 20.86ZM17.48 14.53C17.23 14.41 16.04 13.85 15.82 13.77C15.59 13.68 15.42 13.64 15.26 13.89C15.1 14.14 14.6 14.7 14.46 14.86C14.32 15.02 14.18 15.04 13.93 14.91C13.68 14.79 12.92 14.54 12.02 13.74C11.28 13.08 10.79 12.28 10.65 12.03C10.51 11.78 10.63 11.66 10.75 11.54C10.86 11.42 11.01 11.25 11.13 11.11C11.25 10.97 11.3 10.85 11.42 10.65C11.53 10.45 11.48 10.28 11.41 10.16C11.35 10.04 10.85 8.78 10.65 8.28C10.45 7.78 10.26 7.85 10.12 7.85C9.98 7.85 9.82 7.85 9.66 7.85C9.5 7.85 9.22 7.93 9 8.18C8.78 8.43 8.24 8.93 8.24 10.13C8.24 11.33 9.02 12.47 9.14 12.63C9.26 12.79 10.85 15.23 13.22 16.19C15.59 17.15 15.59 16.78 15.94 16.74C16.29 16.7 17.23 16.14 17.43 15.53C17.63 14.92 17.63 14.39 17.55 14.27C17.48 14.14 17.35 14.06 17.1 13.93Z" />
-                        </svg>
-                        Pesan Sekarang
+                    <a href="https://wa.me/6282322130101" target="_blank" rel="noopener noreferrer" class="btn-outlined" aria-label="Pesan via WhatsApp">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.48 3.45 1.37 4.95L2.45 20.55l3.85-1.01a9.88 9.88 0 0010.87.88 9.88 9.88 0 004.78-9.5C21.95 5.49 17.5 1 12.04 1zm0 18.86c-1.6 0-3.15-.45-4.5-1.29l-.27-.15-3.45.91.93-3.3-.17-.28a8.93 8.93 0 01-1.45-4.79c0-4.97 3.98-8.96 8.91-8.96 2.42 0 4.59.95 6.23 2.59a8.93 8.93 0 012.59 6.23c0 4.97-3.98 9.04-8.82 9.04zm5.44-6.33c-.25-.12-1.44-.72-1.66-.8-.23-.09-.4-.13-.56.12-.16.25-.66.81-.82 1.08-.16.27-.32.3-.57.18-.25-.12-1.01-.37-1.91-1.17a7.01 7.01 0 01-1.37-1.71c-.14-.25-.02-.38.1-.5.11-.12.26-.27.38-.41.12-.14.17-.26.29-.46.12-.2.07-.37-.01-.51a143.47 143.47 0 01-1.28-2.84c-.2-.5-.42-.43-.56-.43-.14 0-.3-.02-.46-.02-.16 0-.44.06-.66.31-.22.25-.76.75-.76 1.95 0 1.2.78 2.34.9 2.5.12.16 1.71 2.6 4.08 3.56 2.37.96 2.37.59 2.72.55.35-.04 1.29-.6 1.49-1.21.2-.61.2-1.14.12-1.26-.07-.13-.25-.2-.5-.32z"/></svg>
+                        Pesan via WhatsApp
                     </a>
+                </div>
+                <div class="hero-social-proof">
+                    <div class="proof-item">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="var(--caramel)"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+                        <span><strong>500+</strong> Pesanan</span>
+                    </div>
+                    <div class="proof-item">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>
+                        <span><strong>100%</strong> Bunga Segar</span>
+                    </div>
+                    <div class="proof-item">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/></svg>
+                        <span>Jabodetabek</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-right">
+                <div class="hero-image-cluster">
+                    <img class="hero-img-main" src="img/img1.jpeg" alt="Papan bunga premium Rizz Florist" width="500" height="625" fetchpriority="high">
+                    <img class="hero-img-float" src="img/img6.jpeg" alt="Standing flower Rizz Florist" width="210" height="210" loading="lazy">
+                    <img class="hero-img-float" src="img/img2.jpeg" alt="Papan bunga standart Rizz Florist" width="175" height="175" loading="lazy">
                 </div>
             </div>
         </section>
 
-        <!-- Gallery Section -->
-        <section id="galeri" class="py-20 px-6 section-pattern">
-            <div class="container mx-auto">
-                <h3
-                    class="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-sky-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                    Galeri Papan Bunga</h3>
-                <p class="text-center text-gray-600 mb-12 text-lg">Karya-karya terbaik kami yang telah dipercaya oleh
-                    pelanggan</p>
-                <div id="gallery-container" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-                    <div class="bg-white gallery-item"><img src="img/img1.jpeg" alt="Papan bunga Rizz Florist 1"
-                            loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item"><img src="img/img2.jpeg" alt="Papan bunga Rizz Florist 2"
-                            loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item"><img src="img/img3.jpeg" alt="Papan bunga Rizz Florist 3"
-                            loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item"><img src="img/img4.jpeg" alt="Papan bunga Rizz Florist 4"
-                            loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item"><img src="img/img5.jpeg" alt="Papan bunga Rizz Florist 5"
-                            loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item"><img src="img/img6.jpeg" alt="Papan bunga Rizz Florist 6"
-                            loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item"><img src="img/img7.jpeg" alt="Papan bunga Rizz Florist 7"
-                            loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item"><img src="img/img8.jpeg" alt="Papan bunga Rizz Florist 8"
-                            loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img9.jpeg"
-                            alt="Papan bunga Rizz Florist 9" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img10.jpeg"
-                            alt="Papan bunga Rizz Florist 10" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img11.jpeg"
-                            alt="Papan bunga Rizz Florist 11" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img12.jpeg"
-                            alt="Papan bunga Rizz Florist 12" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img13.jpeg"
-                            alt="Papan bunga Rizz Florist 13" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img14.jpeg"
-                            alt="Papan bunga Rizz Florist 14" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img15.jpeg"
-                            alt="Papan bunga Rizz Florist 15" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img16.jpeg"
-                            alt="Papan bunga Rizz Florist 16" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img17.jpeg"
-                            alt="Papan bunga Rizz Florist 17" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img18.jpeg"
-                            alt="Papan bunga Rizz Florist 18" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img19.jpeg"
-                            alt="Papan bunga Rizz Florist 19" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img20.jpeg"
-                            alt="Papan bunga Rizz Florist 20" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img21.jpeg"
-                            alt="Papan bunga Rizz Florist 21" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img22.jpeg"
-                            alt="Papan bunga Rizz Florist 22" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img23.jpeg"
-                            alt="Papan bunga Rizz Florist 23" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img24.jpeg"
-                            alt="Papan bunga Rizz Florist 24" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img25.jpeg"
-                            alt="Papan bunga Rizz Florist 25" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img26.jpeg"
-                            alt="Papan bunga Rizz Florist 26" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img27.jpeg"
-                            alt="Papan bunga Rizz Florist 27" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img28.jpeg"
-                            alt="Papan bunga Rizz Florist 28" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img29.jpeg"
-                            alt="Papan bunga Rizz Florist 29" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img30.jpeg"
-                            alt="Papan bunga Rizz Florist 30" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img31.jpeg"
-                            alt="Papan bunga Rizz Florist 31" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img32.jpeg"
-                            alt="Papan bunga Rizz Florist 32" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img33.jpeg"
-                            alt="Papan bunga Rizz Florist 33" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img34.jpeg"
-                            alt="Papan bunga Rizz Florist 34" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img35.jpeg"
-                            alt="Papan bunga Rizz Florist 35" loading="lazy" decoding="async"></div>
-                    <div class="bg-white gallery-item extra-image hidden"><img src="img/img36.jpeg"
-                            alt="Papan bunga Rizz Florist 36" loading="lazy" decoding="async"></div>
+        <!-- ═══════════ WHY US ═══════════ -->
+        <section class="py-16 md:py-24 px-4 sm:px-6" style="background:var(--cream);">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="section-label">Kenapa Rizz Florist?</span>
+                    <h2 class="section-title text-center">Kualitas Premium,<br>Layanan Terpercaya</h2>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2" style="color:var(--text-primary)">Bunga Pilihan</h3>
+                        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6">Hanya bunga segar berkualitas tinggi yang kami gunakan dalam setiap rangkaian.</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2" style="color:var(--text-primary)">Desain Kustom</h3>
+                        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6">Setiap papan bunga dibuat sesuai keinginan — nama, warna, dan gaya Anda pilih sendiri.</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2" style="color:var(--text-primary)">Tepat Waktu</h3>
+                        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6">Pengiriman dijamin tepat sampai di lokasi sesuai jadwal yang Anda tentukan.</p>
+                    </div>
+                    <div class="why-card">
+                        <div class="why-icon">
+                            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path d="M12 1a3 3 0 00-3 3v8a3 3 0 006 0V4a3 3 0 00-3-3z"/><path d="M19 10v2a7 7 0 01-14 0v-2"/><line x1="12" y1="19" x2="12" y2="23"/></svg>
+                        </div>
+                        <h3 class="font-semibold text-lg mb-2" style="color:var(--text-primary)">Konsultasi Gratis</h3>
+                        <p style="color:var(--text-muted);font-size:0.9rem;line-height:1.6">Bingung memilih? Tim kami siap membantu lewat WhatsApp kapan saja.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ═══════════ GALLERY BENTO ═══════════ -->
+        <section id="galeri" class="py-16 md:py-24 px-4 sm:px-6" style="background:var(--cream-warm);">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="section-label">Portfolio</span>
+                    <h2 class="section-title text-center">Galeri Papan Bunga</h2>
+                    <p style="color:var(--text-muted);font-size:1rem;max-width:480px;margin:0 auto;">Karya-karya terbaik kami yang telah menghiasi ratusan acara spesial pelanggan</p>
+                </div>
+                <div id="gallery-container" class="bento-grid">
+                    <div class="bento-item bento-tall"><img src="img/img1.jpeg" alt="Papan bunga premium J2" width="400" height="440" loading="lazy" decoding="async"></div>
+                    <div class="bento-item"><img src="img/img2.jpeg" alt="Papan bunga standart" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item bento-wide"><img src="img/img3.jpeg" alt="Papan bunga 4 titik" width="800" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item"><img src="img/img4.jpeg" alt="Papan bunga J3" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item"><img src="img/img5.jpeg" alt="Bunga meja" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item"><img src="img/img6.jpeg" alt="Standing flower" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item bento-wide"><img src="img/img7.jpeg" alt="Standing flower atas bawah" width="800" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item"><img src="img/img8.jpeg" alt="Papan bunga besar 4 titik" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img9.jpeg" alt="Papan bunga sambung" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img10.jpeg" alt="Papan bunga sambung besar" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item bento-wide extra-image hidden"><img src="img/img11.jpeg" alt="Papan bunga besar 6 titik" width="800" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img12.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img13.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img14.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img15.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item bento-tall extra-image hidden"><img src="img/img16.jpeg" alt="Papan bunga Rizz Florist" width="400" height="440" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img17.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img18.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item bento-wide extra-image hidden"><img src="img/img19.jpeg" alt="Papan bunga Rizz Florist" width="800" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img20.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img21.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img22.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img23.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img24.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img25.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item bento-tall extra-image hidden"><img src="img/img26.jpeg" alt="Papan bunga Rizz Florist" width="400" height="440" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img27.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img28.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img29.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img30.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img31.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img32.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img33.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img34.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img35.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
+                    <div class="bento-item extra-image hidden"><img src="img/img36.jpeg" alt="Papan bunga Rizz Florist" width="400" height="220" loading="lazy" decoding="async"></div>
                 </div>
                 <div class="text-center mt-12">
-                    <button id="load-more-btn"
-                        class="btn-primary bg-gradient-to-r from-sky-600 to-purple-600 text-white font-bold py-4 px-10 rounded-xl hover:from-sky-700 hover:to-purple-700 transition-all shadow-lg">
-                        <span>Lihat Lebih Banyak Foto</span>
+                    <button id="load-more-btn" class="btn-solid mx-auto" style="font-size:0.9rem;padding:0.85rem 2.5rem;">
+                        Lihat Lebih Banyak Foto
                     </button>
                 </div>
             </div>
         </section>
 
-        <!-- Pricing Section -->
-        <section id="pricing" class="py-20 px-6 bg-white">
-            <div class="container mx-auto">
-                <h3
-                    class="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-sky-600 via-purple-600 to-pink-600 bg-clip-text text-transparent">
-                    Harga Papan Bunga</h3>
-                <p class="text-center text-gray-600 mb-12 text-lg">Pilih paket yang sesuai dengan kebutuhan Anda</p>
-                <div id="pricing-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Pricing Card 1: Papan Bunga J2 (Rp. 550.000) -->
-                    <div class="pricing-card rounded-xl overflow-hidden">
-                        <div class="h-56 w-full overflow-hidden bg-gray-100">
-                            <img src="img/img1.jpeg" alt="Papan Bunga J2" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-2xl font-bold text-sky-700 mb-2">Papan Bunga J2</h4>
-                            <p class="text-lg text-gray-600 mb-4">Ukuran 125x200</p>
-                            <p
-                                class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                                Rp. 550.000</p>
-                            <ul class="text-gray-600 space-y-3">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Free Custom</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Cocok untuk segala moment</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Bunga segar & berkualitas tinggi</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Desain elegan</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Pricing Card 2: Papan Bunga Standart (Rp. 600.000) -->
-                    <div class="pricing-card rounded-xl overflow-hidden">
-                        <div class="h-56 w-full overflow-hidden bg-gray-100">
-                            <img src="img/img2.jpeg" alt="Papan Bunga Standart" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-2xl font-bold text-sky-700 mb-2">Papan Bunga Standart</h4>
-                            <p class="text-lg text-gray-600 mb-4">Ukuran 150x200</p>
-                            <p
-                                class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                                Rp. 600.000</p>
-                            <ul class="text-gray-600 space-y-3">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Free Custom</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Cocok untuk segala moment</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Bunga segar & berkualitas tinggi</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Desain elegan</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Pricing Card 3: Papan Bunga 4 Titik (Rp. 700.000) -->
-                    <div class="pricing-card rounded-xl overflow-hidden">
-                        <div class="h-56 w-full overflow-hidden bg-gray-100">
-                            <img src="img/img3.jpeg" alt="Papan Bunga 4 Titik" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-2xl font-bold text-sky-700 mb-2">Papan Bunga 4 Titik</h4>
-                            <p class="text-lg text-gray-600 mb-4">Ukuran 125x200</p>
-                            <p
-                                class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                                Rp. 700.000</p>
-                            <ul class="text-gray-600 space-y-3">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Free Custom</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Cocok untuk segala moment</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Bunga segar & berkualitas tinggi</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Desain elegan</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Pricing Card 4: Papan Bunga J3 (Rp. 750.000) -->
-                    <div class="pricing-card rounded-xl overflow-hidden">
-                        <div class="h-56 w-full overflow-hidden bg-gray-100">
-                            <img src="img/img4.jpeg" alt="Papan Bunga J3" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-2xl font-bold text-sky-700 mb-2">Papan Bunga J3</h4>
-                            <p class="text-lg text-gray-600 mb-4">Ukuran 150x200</p>
-                            <p
-                                class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                                Rp. 750.000</p>
-                            <ul class="text-gray-600 space-y-3">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Free Custom</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Cocok untuk segala moment</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Bunga segar & berkualitas tinggi</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Desain elegan</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Pricing Card 5: Bunga Meja (Rp. 750.000) -->
-                    <div class="pricing-card rounded-xl overflow-hidden">
-                        <div class="h-56 w-full overflow-hidden bg-gray-100">
-                            <img src="img/img5.jpeg" alt="Bunga Meja" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-2xl font-bold text-sky-700 mb-2">Bunga Meja</h4>
-                            <p
-                                class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                                Rp. 750.000</p>
-                            <ul class="text-gray-600 space-y-3">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Free Custom</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Cocok untuk segala moment</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Bunga segar & berkualitas tinggi</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Desain elegan</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Pricing Card 6: Standing Flower - Bunga Atas (Rp. 850.000) -->
-                    <div class="pricing-card rounded-xl overflow-hidden">
-                        <div class="h-56 w-full overflow-hidden bg-gray-100">
-                            <img src="img/img6.jpeg" alt="Standing Flower" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-2xl font-bold text-sky-700 mb-2">Standing Flower</h4>
-                            <p class="text-lg text-gray-600 mb-4">Bunga Atas</p>
-                            <p
-                                class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                                Rp. 850.000</p>
-                            <ul class="text-gray-600 space-y-3">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Free Custom</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Cocok untuk segala moment</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Bunga segar & berkualitas tinggi</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Desain elegan</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Pricing Card 7: Standing Flower - Bunga Atas dan Bawah (Rp. 1.000.000) -->
-                    <div class="pricing-card rounded-xl overflow-hidden">
-                        <div class="h-56 w-full overflow-hidden bg-gray-100">
-                            <img src="img/img7.jpeg" alt="Standing Flower" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-2xl font-bold text-sky-700 mb-2">Standing Flower</h4>
-                            <p class="text-lg text-gray-600 mb-4">Bunga Atas dan Bawah</p>
-                            <p
-                                class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                                Rp. 1.000.000</p>
-                            <ul class="text-gray-600 space-y-3">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Free Custom</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Cocok untuk segala moment</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Bunga segar & berkualitas tinggi</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Desain elegan</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Pricing Card 8: Papan Bunga Besar 4 Titik (kuping Lebar) (Rp. 1.200.000) -->
-                    <div class="pricing-card rounded-xl overflow-hidden">
-                        <div class="h-56 w-full overflow-hidden bg-gray-100">
-                            <img src="img/img8.jpeg" alt="Papan Bunga Besar 4 Titik (kuping Lebar)" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-2xl font-bold text-sky-700 mb-2">Papan Bunga Besar 4 Titik (kuping Lebar)</h4>
-                            <p class="text-lg text-gray-600 mb-4">Ukuran 150x200</p>
-                            <p
-                                class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                                Rp. 1.200.000</p>
-                            <ul class="text-gray-600 space-y-3">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Kuping Lebar</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Free Custom</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Cocok untuk segala moment</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Bunga segar & berkualitas tinggi</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Desain elegan</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Pricing Card 9: Papan Bunga Sambung (Rp. 1.300.000) -->
-                    <div class="pricing-card rounded-xl overflow-hidden">
-                        <div class="h-56 w-full overflow-hidden bg-gray-100">
-                            <img src="img/img9.jpeg" alt="Papan Bunga Sambung" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-2xl font-bold text-sky-700 mb-2">Papan Bunga Sambung</h4>
-                            <p class="text-lg text-gray-600 mb-4">Ukuran 125x400</p>
-                            <p
-                                class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                                Rp. 1.300.000</p>
-                            <ul class="text-gray-600 space-y-3">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Papan Bunga Sambung</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Free Custom</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Cocok untuk segala moment</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Bunga segar & berkualitas tinggi</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Desain elegan</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Pricing Card 10: Papan Bunga Sambung (Rp. 1.500.000) -->
-                    <div class="pricing-card rounded-xl overflow-hidden">
-                        <div class="h-56 w-full overflow-hidden bg-gray-100">
-                            <img src="img/img10.jpeg" alt="Papan Bunga Sambung" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-2xl font-bold text-sky-700 mb-2">Papan Bunga Sambung</h4>
-                            <p class="text-lg text-gray-600 mb-4">Ukuran 150x400</p>
-                            <p
-                                class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                                Rp. 1.500.000</p>
-                            <ul class="text-gray-600 space-y-3">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Papan Bunga Sambung</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Free Custom</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Cocok untuk segala moment</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Bunga segar & berkualitas tinggi</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Desain elegan</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- Pricing Card 11: Papan Bunga Besar 6 Titik (Rp. 1.500.000) -->
-                    <div class="pricing-card rounded-xl overflow-hidden">
-                        <div class="h-56 w-full overflow-hidden bg-gray-100">
-                            <img src="img/img11.jpeg" alt="Papan Bunga Besar 6 Titik" class="w-full h-full object-cover">
-                        </div>
-                        <div class="p-8">
-                            <h4 class="text-2xl font-bold text-sky-700 mb-2">Papan Bunga Besar 6 Titik</h4>
-                            <p class="text-lg text-gray-600 mb-4">Ukuran 150x200</p>
-                            <p
-                                class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                                Rp. 1.500.000</p>
-                            <ul class="text-gray-600 space-y-3">
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Free Custom</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Cocok untuk segala moment</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Bunga segar & berkualitas tinggi</li>
-                                <li class="flex items-center"><svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
-                                            clip-rule="evenodd"></path>
-                                    </svg>Desain elegan</li>
-                            </ul>
-                        </div>
-                    </div>
+        <!-- ═══════════ PRICING ═══════════ -->
+        <section id="pricing" class="py-16 md:py-24 px-4 sm:px-6" style="background:var(--cream);">
+            <div class="max-w-7xl mx-auto">
+                <div class="text-center mb-12">
+                    <span class="section-label">Daftar Harga</span>
+                    <h2 class="section-title text-center">Pilih Paket Sesuai<br>Kebutuhan Anda</h2>
+                    <p style="color:var(--text-muted);font-size:1rem;max-width:480px;margin:0 auto;">Semua harga sudah termasuk free custom tulisan dan ongkos kirim area Jabodetabek</p>
+                </div>
+                <div id="pricing-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Card 1 -->
+                    <div class="price-card"><img class="price-img" src="img/img1.jpeg" alt="Papan Bunga J2" width="400" height="220"><div class="price-body"><h4 class="price-name">Papan Bunga J2</h4><p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:0.75rem;">125 × 200 cm</p><p class="price-amount">Rp. 550.000</p><div class="space-y-2 mt-4"><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Free custom tulisan</div><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Bunga segar premium</div><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Desain elegan</div></div></div></div>
+                    <!-- Card 2 -->
+                    <div class="price-card"><img class="price-img" src="img/img2.jpeg" alt="Papan Bunga Standart" width="400" height="220"><div class="price-body"><h4 class="price-name">Papan Bunga Standart</h4><p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:0.75rem;">150 × 200 cm</p><p class="price-amount">Rp. 600.000</p><div class="space-y-2 mt-4"><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Free custom tulisan</div><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Bunga segar premium</div><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Desain elegan</div></div></div></div>
+                    <!-- Card 3 (Featured) -->
+                    <div class="price-card featured"><span class="badge">Terpopuler</span><img class="price-img" src="img/img3.jpeg" alt="Papan Bunga 4 Titik" width="400" height="220"><div class="price-body"><h4 class="price-name">Papan Bunga 4 Titik</h4><p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:0.75rem;">125 × 200 cm</p><p class="price-amount">Rp. 700.000</p><div class="space-y-2 mt-4"><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Free custom tulisan</div><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Bunga segar premium</div><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>4 titik rangkaian</div></div></div></div>
+                    <!-- Card 4-11 similar but shorter for space -->
+                    <div class="price-card"><img class="price-img" src="img/img4.jpeg" alt="Papan Bunga J3" width="400" height="220"><div class="price-body"><h4 class="price-name">Papan Bunga J3</h4><p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:0.75rem;">150 × 200 cm</p><p class="price-amount">Rp. 750.000</p><div class="space-y-2 mt-4"><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Free custom</div><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Bunga segar premium</div></div></div></div>
+                    <div class="price-card"><img class="price-img" src="img/img5.jpeg" alt="Bunga Meja" width="400" height="220"><div class="price-body"><h4 class="price-name">Bunga Meja</h4><p class="price-amount" style="margin-top:0.5rem">Rp. 750.000</p><div class="space-y-2 mt-4"><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Free custom</div><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Desain elegan</div></div></div></div>
+                    <div class="price-card"><img class="price-img" src="img/img6.jpeg" alt="Standing Flower" width="400" height="220"><div class="price-body"><h4 class="price-name">Standing Flower</h4><p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:0.75rem;">Bunga Atas</p><p class="price-amount">Rp. 850.000</p><div class="space-y-2 mt-4"><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Free custom</div><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Bunga segar premium</div></div></div></div>
+                    <!-- Card 7-11 placed in remaining grid spots -->
+                    <div class="price-card"><img class="price-img" src="img/img7.jpeg" alt="Standing Flower Atas Bawah" width="400" height="220"><div class="price-body"><h4 class="price-name">Standing Flower</h4><p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:0.75rem;">Bunga Atas &amp; Bawah</p><p class="price-amount">Rp. 1.000.000</p><div class="space-y-2 mt-4"><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Free custom</div><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Full rangkaian</div></div></div></div>
+                    <div class="price-card"><img class="price-img" src="img/img8.jpeg" alt="Papan Bunga Besar 4 Titik" width="400" height="220"><div class="price-body"><h4 class="price-name">Papan Besar 4 Titik</h4><p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:0.75rem;">Kuping Lebar · 150×200</p><p class="price-amount">Rp. 1.200.000</p><div class="space-y-2 mt-4"><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Kuping lebar</div><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Free custom</div></div></div></div>
+                    <div class="price-card"><img class="price-img" src="img/img9.jpeg" alt="Papan Bunga Sambung" width="400" height="220"><div class="price-body"><h4 class="price-name">Papan Bunga Sambung</h4><p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:0.75rem;">125 × 400 cm</p><p class="price-amount">Rp. 1.300.000</p><div class="space-y-2 mt-4"><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Papan sambung</div><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Free custom</div></div></div></div>
+                    <div class="price-card"><img class="price-img" src="img/img10.jpeg" alt="Papan Bunga Sambung Besar" width="400" height="220"><div class="price-body"><h4 class="price-name">Papan Bunga Sambung</h4><p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:0.75rem;">150 × 400 cm</p><p class="price-amount">Rp. 1.500.000</p><div class="space-y-2 mt-4"><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Papan sambung</div><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Free custom</div></div></div></div>
+                    <div class="price-card"><img class="price-img" src="img/img11.jpeg" alt="Papan Bunga Besar 6 Titik" width="400" height="220"><div class="price-body"><h4 class="price-name">Papan Besar 6 Titik</h4><p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:0.75rem;">150 × 200 cm</p><p class="price-amount">Rp. 1.500.000</p><div class="space-y-2 mt-4"><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>6 titik rangkaian</div><div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Free custom</div></div></div></div>
                 </div>
             </div>
         </section>
 
+        <!-- ═══════════ CTA BANNER ═══════════ -->
+        <section class="cta-banner py-20 px-4 sm:px-6 text-center relative z-10">
+            <div class="relative z-10 max-w-3xl mx-auto">
+                <h2 class="ff-serif text-3xl md:text-4xl font-bold text-white mb-4" style="text-wrap:balance;">Siap Memesan Papan Bunga?</h2>
+                <p style="color:rgba(255,255,255,0.65);font-size:1.05rem;margin-bottom:2rem;">Konsultasi gratis, desain kustom, pengiriman tepat waktu. Hubungi kami sekarang.</p>
+                <a href="https://wa.me/6282322130101" target="_blank" rel="noopener noreferrer"
+                   class="inline-flex items-center gap-2.5 px-8 py-3.5 rounded-xl font-semibold text-base"
+                   style="background:white;color:var(--brown);transition:all 0.3s;box-shadow:0 10px 35px rgba(0,0,0,0.15);"
+                   onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 14px 40px rgba(0,0,0,0.22)';"
+                   onmouseout="this.style.transform='';this.style.boxShadow=''">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.48 3.45 1.37 4.95L2.45 20.55l3.85-1.01a9.88 9.88 0 0010.87.88 9.88 9.88 0 004.78-9.5C21.95 5.49 17.5 1 12.04 1zm0 18.86c-1.6 0-3.15-.45-4.5-1.29l-.27-.15-3.45.91.93-3.3-.17-.28a8.93 8.93 0 01-1.45-4.79c0-4.97 3.98-8.96 8.91-8.96 2.42 0 4.59.95 6.23 2.59a8.93 8.93 0 012.59 6.23c0 4.97-3.98 9.04-8.82 9.04zm5.44-6.33c-.25-.12-1.44-.72-1.66-.8-.23-.09-.4-.13-.56.12-.16.25-.66.81-.82 1.08-.16.27-.32.3-.57.18-.25-.12-1.01-.37-1.91-1.17a7.01 7.01 0 01-1.37-1.71c-.14-.25-.02-.38.1-.5.11-.12.26-.27.38-.41.12-.14.17-.26.29-.46.12-.2.07-.37-.01-.51a143.47 143.47 0 01-1.28-2.84c-.2-.5-.42-.43-.56-.43-.14 0-.3-.02-.46-.02-.16 0-.44.06-.66.31-.22.25-.76.75-.76 1.95 0 1.2.78 2.34.9 2.5.12.16 1.71 2.6 4.08 3.56 2.37.96 2.37.59 2.72.55.35-.04 1.29-.6 1.49-1.21.2-.61.2-1.14.12-1.26-.07-.13-.25-.2-.5-.32z"/></svg>
+                    Pesan via WhatsApp
+                </a>
+            </div>
+        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="text-white mt-12">
-        <div class="container mx-auto px-6 py-12 text-center">
-            <h4 class="text-3xl font-bold mb-6">Hubungi Kami</h4>
-            <p class="mb-6 text-lg text-white/90">Pesan papan bunga Anda sekarang juga!</p>
-            <div class="mt-6 space-y-4 text-white/90">
-                <p class="flex items-center justify-center"><svg class="w-5 h-5 mr-2" fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z"></path>
-                        <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z"></path>
-                    </svg><strong>Email:</strong> <a href="mailto:rizzflorist12@gmail.com"
-                        class="ml-2 hover:text-white transition">rizzflorist12@gmail.com</a></p>
-                <p class="flex items-center justify-center"><svg class="w-5 h-5 mr-2" fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path
-                            d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z">
-                        </path>
-                    </svg><strong>Telepon:</strong> <a href="tel:+6282322130101"
-                        class="ml-2 hover:text-white transition">082322130101</a></p>
-                <p class="flex items-center justify-center"><svg class="w-5 h-5 mr-2" fill="currentColor"
-                        viewBox="0 0 20 20">
-                        <path fill-rule="evenodd"
-                            d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg><strong>Instagram:</strong> <a href="https://www.instagram.com/rizz_florist.id"
-                        target="_blank" rel="noopener noreferrer"
-                        class="ml-2 hover:text-white transition">@rizz_florist.id</a></p>
-                <p class="flex items-center justify-center"><span class="ml-2">Jakarta, Indonesia</span></p>
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer id="site-footer" id="kontak" class="py-16 px-4 sm:px-6">
+        <div class="max-w-7xl mx-auto footer-grid">
+            <div>
+                <div class="flex items-center gap-2.5 mb-4">
+                    <svg width="28" height="28" viewBox="0 0 32 32" fill="none" stroke="var(--rose-light)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 2c-2 0-4 1-5 4-3 6-8 10-8 14 0 4 5 8 13 8s13-4 13-8c0-4-5-8-8-14-1-3-3-4-5-4z"/><circle cx="16" cy="20" r="4"/><path d="M16 24v6"/></svg>
+                    <span class="ff-serif font-semibold text-white text-lg">Rizz Florist</span>
+                </div>
+                <p style="color:rgba(255,255,255,0.45);font-size:0.85rem;line-height:1.7;max-width:300px;">Pusat karangan bunga Jabodetabek — menyediakan papan bunga ucapan premium untuk setiap momen istimewa Anda.</p>
             </div>
-            <div class="mt-10 border-t border-white/20 pt-6">
-                <p class="text-white/70">&copy; 2025 Rizz Florist. All Rights Reserved.</p>
+            <div>
+                <h4 class="footer-title">Navigasi</h4>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;">
+                    <li><a href="#" class="footer-link">Beranda</a></li>
+                    <li><a href="#galeri" class="footer-link">Galeri</a></li>
+                    <li><a href="#pricing" class="footer-link">Daftar Harga</a></li>
+                </ul>
             </div>
+            <div>
+                <h4 class="footer-title">Kontak</h4>
+                <ul style="list-style:none;display:flex;flex-direction:column;gap:0.6rem;">
+                    <li><a href="mailto:rizzflorist12@gmail.com" class="footer-link">rizzflorist12@gmail.com</a></li>
+                    <li><a href="tel:+6282322130101" class="footer-link">0823-2213-0101</a></li>
+                    <li><a href="https://www.instagram.com/rizz_florist.id" target="_blank" rel="noopener noreferrer" class="footer-link">@rizz_florist.id</a></li>
+                    <li style="color:rgba(255,255,255,0.45);">Jakarta, Indonesia</li>
+                </ul>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto mt-12 pt-8 border-t" style="border-color:rgba(255,255,255,0.08);">
+            <p style="color:rgba(255,255,255,0.3);font-size:0.8rem;text-align:center;">&copy; 2025 Rizz Florist. All rights reserved.</p>
         </div>
     </footer>
 
-    <!-- Modal / Lightbox -->
-    <div id="modal" class="fixed inset-0 flex justify-center items-center p-4 z-50 hidden opacity-0">
-        <div class="relative max-w-4xl max-h-full">
-            <img id="modal-img" src="" alt="Tampilan besar papan bunga"
-                class="rounded-xl shadow-2xl max-h-[90vh] object-contain">
-            <button id="close-modal"
-                class="absolute -top-4 -right-4 text-white bg-gradient-to-r from-sky-600 to-purple-600 rounded-full h-12 w-12 flex items-center justify-center text-3xl font-bold hover:from-sky-700 hover:to-purple-700 transition-all shadow-lg">&times;</button>
-            <button id="prev-btn"
-                class="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black/50 backdrop-blur-sm rounded-full h-14 w-14 flex items-center justify-center text-3xl hover:bg-black/70 transition-all">&#10094;</button>
-            <button id="next-btn"
-                class="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black/50 backdrop-blur-sm rounded-full h-14 w-14 flex items-center justify-center text-3xl hover:bg-black/70 transition-all">&#10095;</button>
-        </div>
+    <!-- ═══════════ LIGHTBOX ═══════════ -->
+    <div id="lightbox-modal" class="hidden">
+        <img id="lightbox-img" src="" alt="Tampilan besar papan bunga" class="lightbox-img" width="1200" height="900">
+        <button id="lightbox-close" class="lightbox-btn lightbox-close" aria-label="Tutup">&times;</button>
+        <button id="lightbox-prev" class="lightbox-btn lightbox-prev" aria-label="Foto sebelumnya">&#10094;</button>
+        <button id="lightbox-next" class="lightbox-btn lightbox-next" aria-label="Foto berikutnya">&#10095;</button>
     </div>
 
-    <!-- Tombol Chat WhatsApp -->
-    <a href="https://wa.me/6282322130101" target="_blank" rel="noopener noreferrer"
-        aria-label="Buka chat WhatsApp Rizz Florist"
-        class="whatsapp-btn fixed bottom-8 right-8 bg-green-500 text-white px-6 py-4 rounded-full flex items-center justify-center hover:bg-green-600 transition-transform hover:scale-110 z-40">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7 mr-3" viewBox="0 0 24 24" fill="currentColor">
-            <path
-                d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.61 15.36 3.5 16.86L2.45 20.55L6.3 19.54C7.75 20.38 9.34 20.86 11.04 20.86H12.04C17.5 20.86 21.95 16.41 21.95 10.95C21.95 5.49 17.5 1 12.04 1ZM12.04 20.86C10.44 20.86 8.89 20.41 7.54 19.57L7.27 19.42L3.82 20.33L4.75 17.03L4.58 16.75C3.65 15.33 3.13 13.68 3.13 11.96C3.13 6.99 7.11 3 12.04 3C14.46 3 16.63 3.95 18.27 5.59C19.91 7.23 20.86 9.4 20.86 11.82C20.86 16.79 16.88 20.86 12.04 20.86ZM17.48 14.53C17.23 14.41 16.04 13.85 15.82 13.77C15.59 13.68 15.42 13.64 15.26 13.89C15.1 14.14 14.6 14.7 14.46 14.86C14.32 15.02 14.18 15.04 13.93 14.91C13.68 14.79 12.92 14.54 12.02 13.74C11.28 13.08 10.79 12.28 10.65 12.03C10.51 11.78 10.63 11.66 10.75 11.54C10.86 11.42 11.01 11.25 11.13 11.11C11.25 10.97 11.3 10.85 11.42 10.65C11.53 10.45 11.48 10.28 11.41 10.16C11.35 10.04 10.85 8.78 10.65 8.28C10.45 7.78 10.26 7.85 10.12 7.85C9.98 7.85 9.82 7.85 9.66 7.85C9.5 7.85 9.22 7.93 9 8.18C8.78 8.43 8.24 8.93 8.24 10.13C8.24 11.33 9.02 12.47 9.14 12.63C9.26 12.79 10.85 15.23 13.22 16.19C15.59 17.15 15.59 16.78 15.94 16.74C16.29 16.7 17.23 16.14 17.43 15.53C17.63 14.92 17.63 14.39 17.55 14.27C17.48 14.14 17.35 14.06 17.1 13.93Z" />
-        </svg>
-        <span class="font-semibold text-base">Pesan Sekarang</span>
+    <!-- ═══════════ FLOATING WHATSAPP ═══════════ -->
+    <a href="https://wa.me/6282322130101" target="_blank" rel="noopener noreferrer" class="wa-fab" aria-label="Chat WhatsApp Rizz Florist">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.48 3.45 1.37 4.95L2.45 20.55l3.85-1.01a9.88 9.88 0 0010.87.88 9.88 9.88 0 004.78-9.5C21.95 5.49 17.5 1 12.04 1zm0 18.86c-1.6 0-3.15-.45-4.5-1.29l-.27-.15-3.45.91.93-3.3-.17-.28a8.93 8.93 0 01-1.45-4.79c0-4.97 3.98-8.96 8.91-8.96 2.42 0 4.59.95 6.23 2.59a8.93 8.93 0 012.59 6.23c0 4.97-3.98 9.04-8.82 9.04zm5.44-6.33c-.25-.12-1.44-.72-1.66-.8-.23-.09-.4-.13-.56.12-.16.25-.66.81-.82 1.08-.16.27-.32.3-.57.18-.25-.12-1.01-.37-1.91-1.17a7.01 7.01 0 01-1.37-1.71c-.14-.25-.02-.38.1-.5.11-.12.26-.27.38-.41.12-.14.17-.26.29-.46.12-.2.07-.37-.01-.51a143.47 143.47 0 01-1.28-2.84c-.2-.5-.42-.43-.56-.43-.14 0-.3-.02-.46-.02-.16 0-.44.06-.66.31-.22.25-.76.75-.76 1.95 0 1.2.78 2.34.9 2.5.12.16 1.71 2.6 4.08 3.56 2.37.96 2.37.59 2.72.55.35-.04 1.29-.6 1.49-1.21.2-.61.2-1.14.12-1.26-.07-.13-.25-.2-.5-.32z"/></svg>
+        Pesan Sekarang
     </a>
 
+    <!-- ═══════════ SCRIPTS ═══════════ -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Function to initialize modal/lightbox handlers
-            let galleryImageSources = [];
-            let currentIndex = 0;
-            const modal = document.getElementById('modal');
-            const modalImg = document.getElementById('modal-img');
-            const closeModalBtn = document.getElementById('close-modal');
-            const nextBtn = document.getElementById('next-btn');
-            const prevBtn = document.getElementById('prev-btn');
+            let galleryImageSources = [], currentIndex = 0;
+            const modal = document.getElementById('lightbox-modal');
+            const modalImg = document.getElementById('lightbox-img');
 
-            function showModal(index) {
-                currentIndex = index;
-                modalImg.src = galleryImageSources[currentIndex];
+            function showModal(idx) {
+                currentIndex = idx;
+                modalImg.src = galleryImageSources[idx];
                 modal.classList.remove('hidden');
-                setTimeout(() => modal.classList.remove('opacity-0'), 10);
+                document.body.style.overflow = 'hidden';
             }
-
             function hideModal() {
-                modal.classList.add('opacity-0');
-                setTimeout(() => modal.classList.add('hidden'), 300);
+                modal.classList.add('hidden');
+                document.body.style.overflow = '';
             }
+            function showNext() { currentIndex = (currentIndex + 1) % galleryImageSources.length; modalImg.src = galleryImageSources[currentIndex]; }
+            function showPrev() { currentIndex = (currentIndex - 1 + galleryImageSources.length) % galleryImageSources.length; modalImg.src = galleryImageSources[currentIndex]; }
 
-            function showNextImage() {
-                currentIndex = (currentIndex + 1) % galleryImageSources.length;
-                modalImg.src = galleryImageSources[currentIndex];
-            }
-
-            function showPrevImage() {
-                currentIndex = (currentIndex - 1 + galleryImageSources.length) % galleryImageSources.length;
-                modalImg.src = galleryImageSources[currentIndex];
-            }
+            document.getElementById('lightbox-close').addEventListener('click', hideModal);
+            document.getElementById('lightbox-next').addEventListener('click', showNext);
+            document.getElementById('lightbox-prev').addEventListener('click', showPrev);
+            modal.addEventListener('click', e => { if (e.target === modal) hideModal(); });
+            document.addEventListener('keydown', e => {
+                if (modal.classList.contains('hidden')) return;
+                if (e.key === 'ArrowRight') showNext();
+                else if (e.key === 'ArrowLeft') showPrev();
+                else if (e.key === 'Escape') hideModal();
+            });
 
             function setupGalleryClickHandlers() {
-                const galleryItems = document.querySelectorAll('.gallery-item img');
-                galleryImageSources = Array.from(galleryItems).map(img => img.src);
-
-                document.querySelectorAll('.gallery-item').forEach(item => {
-                    // Remove existing listeners by replacing item with a clone
-                    const newItem = item.cloneNode(true);
-                    item.parentNode.replaceChild(newItem, item);
-
-                    newItem.addEventListener('click', () => {
-                        const clickedSrc = newItem.querySelector('img').src;
-                        const actualIndex = galleryImageSources.findIndex(src => src === clickedSrc);
-                        showModal(actualIndex);
+                const imgs = document.querySelectorAll('.bento-item img');
+                galleryImageSources = Array.from(imgs).map(i => i.src);
+                document.querySelectorAll('.bento-item').forEach(item => {
+                    const fresh = item.cloneNode(true);
+                    item.parentNode.replaceChild(fresh, item);
+                    fresh.addEventListener('click', () => {
+                        const src = fresh.querySelector('img').src;
+                        const idx = galleryImageSources.findIndex(s => s === src);
+                        showModal(idx);
                     });
                 });
             }
-
-            closeModalBtn.addEventListener('click', hideModal);
-            nextBtn.addEventListener('click', showNextImage);
-            prevBtn.addEventListener('click', showPrevImage);
-
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    hideModal();
-                }
-            });
-
-            document.addEventListener('keydown', (e) => {
-                if (modal.classList.contains('hidden')) return;
-                if (e.key === 'ArrowRight') {
-                    showNextImage();
-                } else if (e.key === 'ArrowLeft') {
-                    showPrevImage();
-                } else if (e.key === 'Escape') {
-                    hideModal();
-                }
-            });
-
-            // Initial setup for static elements fallback
             setupGalleryClickHandlers();
 
-            // Load more button functionality
             const loadMoreBtn = document.getElementById('load-more-btn');
             function setupLoadMoreBtn() {
-                const extraImages = document.querySelectorAll('.extra-image');
-                if (extraImages.length === 0) {
-                    loadMoreBtn.style.display = 'none';
-                    return;
-                }
-                loadMoreBtn.style.display = 'inline-block';
+                const extra = document.querySelectorAll('.extra-image');
+                if (extra.length === 0) { loadMoreBtn.style.display = 'none'; return; }
+                loadMoreBtn.style.display = 'inline-flex';
                 loadMoreBtn.onclick = () => {
-                    const currentExtraImages = document.querySelectorAll('.extra-image');
-                    currentExtraImages.forEach(item => {
-                        item.classList.remove('hidden');
-                    });
+                    extra.forEach(el => el.classList.remove('hidden'));
                     loadMoreBtn.style.display = 'none';
-                    // Re-calculate gallery image sources after showing hidden items
                     setupGalleryClickHandlers();
                 };
             }
             setupLoadMoreBtn();
 
-            // Fetch dynamic data from API
+            // ── API Data ──
             async function fetchDynamicData() {
                 try {
-                    const response = await fetch('/api/data');
-                    if (!response.ok) return; // Fallback silently to static HTML
-                    const data = await response.json();
-
-                    if (data.contacts) {
-                        updateContacts(data.contacts);
-                    }
-                    if (data.pricing && data.pricing.length > 0) {
-                        updatePricing(data.pricing);
-                    }
-                    if (data.gallery && data.gallery.length > 0) {
-                        updateGallery(data.gallery);
-                    }
-                } catch (err) {
-                    console.warn("Could not load dynamic data from API, using fallback:", err);
-                }
+                    const res = await fetch('/api/data');
+                    if (!res.ok) return;
+                    const data = await res.json();
+                    if (data.contacts) updateContacts(data.contacts);
+                    if (data.pricing && data.pricing.length > 0) updatePricing(data.pricing);
+                    if (data.gallery && data.gallery.length > 0) updateGallery(data.gallery);
+                } catch (e) { console.warn('API fallback:', e); }
             }
 
-            function updateContacts(contacts) {
-                // Update WhatsApp buttons (Hero section and floating button)
-                const waUrl = contacts.whatsapp || 'https://wa.me/6282322130101';
-                document.querySelectorAll('a[href*="wa.me"]').forEach(link => {
-                    link.href = waUrl;
+            function updateContacts(c) {
+                document.querySelectorAll('a[href*="wa.me"]').forEach(l => l.href = c.whatsapp || l.href);
+                document.querySelectorAll('a[href^="tel:"]').forEach(l => {
+                    l.href = `tel:${c.phone || '082322130101'}`;
+                    if (!l.textContent.trim().includes('@')) l.textContent = c.phone || '082322130101';
                 });
-
-                // Update telephone links
-                const phoneUrl = `tel:${contacts.phone || '082322130101'}`;
-                document.querySelectorAll('a[href^="tel:"]').forEach(link => {
-                    link.href = phoneUrl;
-                    const innerText = link.textContent.trim();
-                    // Keep "@" prefix for instagram or email prefix, but replace phone number text
-                    if (!innerText.startsWith('@') && !innerText.includes('@')) {
-                        link.textContent = contacts.phone || '082322130101';
-                    }
-                });
-
-                // Update email links
-                const emailUrl = `mailto:${contacts.email || 'rizzflorist12@gmail.com'}`;
-                document.querySelectorAll('a[href^="mailto:"]').forEach(link => {
-                    link.href = emailUrl;
-                    link.textContent = contacts.email || 'rizzflorist12@gmail.com';
-                });
-
-                // Update instagram link
-                const igLink = contacts.instagram || 'https://www.instagram.com/rizz_florist.id';
-                const igUser = contacts.instagramUser || '@rizz_florist.id';
-                document.querySelectorAll('a[href*="instagram.com"]').forEach(link => {
-                    link.href = igLink;
-                    link.textContent = igUser;
-                });
-
-                // Update address in footer
-                const footerElements = document.querySelectorAll('footer p');
-                footerElements.forEach(p => {
-                    if (p.textContent.includes('Jakarta, Indonesia') || (p.querySelector('span') && p.querySelector('span').textContent.includes('Jakarta'))) {
-                        const span = p.querySelector('span');
-                        if (span) {
-                            span.textContent = contacts.address || 'Jakarta, Indonesia';
-                        } else {
-                            p.innerHTML = `<span class="ml-2">${contacts.address || 'Jakarta, Indonesia'}</span>`;
-                        }
-                    }
-                });
+                document.querySelectorAll('a[href^="mailto:"]').forEach(l => { l.href = `mailto:${c.email || 'rizzflorist12@gmail.com'}`; l.textContent = c.email || 'rizzflorist12@gmail.com'; });
+                document.querySelectorAll('a[href*="instagram.com"]').forEach(l => { l.href = c.instagram || l.href; l.textContent = c.instagramUser || '@rizz_florist.id'; });
             }
 
-            function updatePricing(pricingList) {
-                const pricingContainer = document.getElementById('pricing-container');
-                if (!pricingContainer) return;
-
-                pricingContainer.innerHTML = pricingList.map(item => `
-                    <div class="pricing-card rounded-xl overflow-hidden">
-                        ${item.image ? `
-                            <div class="h-56 w-full overflow-hidden bg-gray-100">
-                                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover">
-                            </div>
-                        ` : ''}
-                        <div class="p-8">
-                            <h4 class="text-2xl font-bold text-sky-700 mb-2">${item.title}</h4>
-                            ${item.size ? `<p class="text-lg text-gray-600 mb-4">${item.size}</p>` : ''}
-                            <p class="text-4xl font-extrabold bg-gradient-to-r from-sky-600 to-purple-600 bg-clip-text text-transparent mb-6">
-                                ${item.price}
-                            </p>
-                            <ul class="text-gray-600 space-y-3">
-                                ${(item.features || []).map(feature => `
-                                    <li class="flex items-center">
-                                        <svg class="w-5 h-5 text-green-500 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                            <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
-                                        </svg>
-                                        ${feature}
-                                    </li>
-                                `).join('')}
-                            </ul>
+            function updatePricing(list) {
+                const container = document.getElementById('pricing-container');
+                if (!container) return;
+                const featuredIdx = list.findIndex(i => parseFloat(i.price?.replace(/[^0-9]/g,'')) >= 600000 && parseFloat(i.price?.replace(/[^0-9]/g,'')) <= 800000);
+                container.innerHTML = list.map((item, idx) => {
+                    const isFeatured = idx === (featuredIdx >= 0 ? featuredIdx : 2);
+                    return `<div class="price-card${isFeatured ? ' featured' : ''}">
+                        ${isFeatured ? '<span class="badge">Terpopuler</span>' : ''}
+                        ${item.image ? `<img class="price-img" src="${item.image}" alt="${item.title}" width="400" height="220">` : ''}
+                        <div class="price-body">
+                            <h4 class="price-name">${item.title}</h4>
+                            ${item.size ? `<p style="color:var(--text-muted);font-size:0.8rem;margin-bottom:0.75rem;">${item.size}</p>` : ''}
+                            <p class="price-amount"${!item.size?' style=margin-top:0.5rem':''}>${item.price}</p>
+                            <div class="space-y-2 mt-4">${(item.features||[]).map(f => `<div class="price-feature"><svg width="16" height="16" viewBox="0 0 20 20" fill="var(--caramel)"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>${f}</div>`).join('')}</div>
                         </div>
-                    </div>
-                `).join('');
+                    </div>`;
+                }).join('');
             }
 
-            function updateGallery(galleryList) {
-                const galleryContainer = document.getElementById('gallery-container');
-                if (!galleryContainer) return;
-
-                galleryContainer.innerHTML = '';
-                galleryList.forEach((item, index) => {
-                    const isExtra = index >= 8;
+            function updateGallery(list) {
+                const container = document.getElementById('gallery-container');
+                if (!container) return;
+                container.innerHTML = '';
+                list.forEach((item, i) => {
                     const div = document.createElement('div');
-                    div.className = `bg-white gallery-item ${isExtra ? 'extra-image hidden' : ''}`;
-                    div.innerHTML = `<img src="${item.url}" alt="${item.alt || 'Papan bunga Rizz Florist'}" loading="lazy" decoding="async">`;
-                    galleryContainer.appendChild(div);
+                    const cls = ['bento-item'];
+                    if (i === 0 || i === 15) cls.push('bento-tall');
+                    else if (i === 2 || i === 6 || i === 10 || i === 18) cls.push('bento-wide');
+                    if (i >= 8) cls.push('extra-image hidden');
+                    div.className = cls.join(' ');
+                    div.innerHTML = `<img src="${item.url}" alt="${item.alt || 'Papan bunga Rizz Florist'}" width="400" height="${cls.includes('bento-tall')?'440':'220'}" loading="lazy" decoding="async">`;
+                    container.appendChild(div);
                 });
-
-                // Update load more button visibility & click handling
                 setupLoadMoreBtn();
-                // Setup new click handlers
                 setupGalleryClickHandlers();
             }
 
-            // Run API loading
             fetchDynamicData();
         });
     </script>
-
 </body>
-
 </html>

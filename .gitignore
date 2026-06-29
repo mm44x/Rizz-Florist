@@ -5,3 +5,6 @@ node_modules/
 .vercel
 .DS_Store
 package-lock.json
+.agents/
+.commandcode/
+skills-lock.json
